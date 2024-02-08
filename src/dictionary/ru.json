@@ -1,0 +1,14 @@
+{
+  "LOGO": "BROONIX",
+  "MobileMenu": {
+    "Placeholder": "Меню"
+  },
+  "Menu": {
+    "Dashboard": "Дашборд",
+    "Clients": "Клиенты",
+    "Billing": "Биллинг",
+    "Notifications": "Уведомления",
+    "Admins": "Админы",
+    "Profile": "Мой профиль"
+  }
+}

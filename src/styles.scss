@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'VAL-UltraBlack';
+  src: url('./assets/fonts/VAL-UltraBlack.woff2') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Regular';
+  src: url('./assets/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Italic';
+  src: url('./assets/fonts/Montserrat-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBold';
+  src: url('./assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-SemiBoldItalic';
+  src: url('./assets/fonts/Montserrat-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('./assets/fonts/Montserrat-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat-BoldItalic';
+  src: url('./assets/fonts/Montserrat-BoldItalic.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Montserrat-Regular;
+  font-size: 14px;
+}
+
+#root {
+  min-height: 100%;
+}
