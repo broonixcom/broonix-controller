@@ -9,7 +9,11 @@ const App: React.FC = () => {
   return (
     <>
       <Menu />
-      <Suspense fallback={<Skeleton.Input active size='large' style={{ width: '100vw' }} />}>
+      <Suspense
+        fallback={
+          <Skeleton.Input active size="large" style={{ width: '100vw' }} />
+        }
+      >
         <Router />
       </Suspense>
     </>

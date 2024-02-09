@@ -1,12 +1,12 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
-import './LogoStyles.scss';
+import './LogoStyles.scss'
 
 const Logo: React.FC = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation()
 
-    return <div className="Logo-body">{t('LOGO')}</div>
+  return <div className="Logo-body">{t('LOGO')}</div>
 }
 
 export default Logo
