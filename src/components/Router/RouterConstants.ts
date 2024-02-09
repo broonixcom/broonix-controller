@@ -5,7 +5,7 @@ export const PATH: IPath = {
   dashboard: '/dashboard',
   clients: '/clients',
   billing: '/billing',
-  notifications: '/notifications',
+  messages: '/messages',
   admins: '/admins',
   profile: '/profile',
 }

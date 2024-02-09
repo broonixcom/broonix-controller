@@ -25,8 +25,8 @@ const Menu: React.FC = () => {
       key: PATH.billing,
     },
     {
-      label: t('Menu.Notifications'),
-      key: PATH.notifications,
+      label: t('Menu.Messages'),
+      key: PATH.messages,
     },
     {
       label: t('Menu.Admins'),
