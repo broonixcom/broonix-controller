@@ -33,6 +33,7 @@ const DesktopMenu: React.FC<IMenuProps> = ({ menuItems }) => {
         <div className="DesktopMenu-body">
             <Logo />
             <Menu
+                className='DesktopMenu-body-menu'
                 mode="horizontal"
                 onClick={handleClickMenu}
                 selectedKeys={location.pathname === PATH.profile ? undefined : [currentPath]}

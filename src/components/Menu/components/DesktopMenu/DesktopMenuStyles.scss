@@ -13,18 +13,11 @@
     display: none;
   }
 
-  // ANTD DESIGN HACKY CODE
-  .ant-menu {
+  &-menu {
     margin-left: 'auto';
     width: 100vw;
-  }
-
-  .ant-menu-horizontal {
     display: flex;
     justify-content: center;
-  }
-
-  .ant-menu-item {
     font-family: Montserrat-SemiBold;
   }
 }
