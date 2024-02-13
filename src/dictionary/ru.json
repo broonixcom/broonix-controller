@@ -3,12 +3,29 @@
   "MobileMenu": {
     "Placeholder": "Меню"
   },
+  "Button": {
+    "Add": "Добавить"
+  },
   "Menu": {
     "Dashboard": "Дашборд",
     "Clients": "Клиенты",
     "Billing": "Биллинг",
+    "SubscribtionMaker": "Конструктор подписок",
     "Messages": "Сообщения",
     "Admins": "Админы",
     "Profile": "Мой профиль"
+  },
+  "SubscribtionMakerPage": {
+    "EmpCount": "Варианты количества сотрудников",
+    "EmpCountPlaceholder": "Выберите варианты",
+    "AddNewSubscrition": "Подписки",
+    "NoLimits": "Без ограничений",
+    "LangSupport": "Поддерживаемые языки",
+    "ModalTitle": "Формирование подписки",
+    "SubcriptionName": "Название подписки",
+    "SubcriptionDescription": "Короткое описание",
+    "SubcriptionMonths": "Кол-во месяцев",
+    "PriceNoDiscount": "Цена без дискаунта в месяц",
+    "PricePerEmployee": "Цена за подключенных сотрудников в месяц"
   }
 }

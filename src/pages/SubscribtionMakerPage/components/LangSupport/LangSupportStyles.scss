@@ -1,0 +1,25 @@
+.LangSupport-body {
+  p {
+    font-family: Montserrat-SemiBold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  &-langList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &-deleteBtn {
+      &:hover {
+        color: red !important;
+      }
+    }
+
+    &-btn {
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}

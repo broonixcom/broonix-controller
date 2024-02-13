@@ -1,0 +1,19 @@
+.SubcribtionCreationModal-body {
+  margin-top: 30px;
+
+  p {
+    font-family: Montserrat-SemiBold;
+    margin-bottom: 10px;
+  }
+
+  &-modal {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: auto;
+    height: 400px;
+
+    &-marginBottom {
+      margin-bottom: 10px;
+    }
+  }
+}

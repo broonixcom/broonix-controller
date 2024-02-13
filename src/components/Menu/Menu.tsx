@@ -1,15 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate, useLocation } from 'react-router-dom'
+
+import { Button, Drawer, Menu as AntdMenu, MenuProps } from 'antd'
+import { IconBurger } from '@tabler/icons-react'
 
 import { PATH } from '@components/Router/RouterConstants'
 
-import DesktopMenu from './components/DesktopMenu'
-import MobileMenu from './components/MobileMenu'
+import Logo from './components/Logo'
+import RightSideBtns from './components/RightSideBtns'
 
 import { IMenuItem } from './MenuTypes'
+import './MenuStyles.scss'
 
 const Menu: React.FC = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const [isMenuOpen, setMenuOpen] = useState(false)
+  const [currentPath, setCurrentPath] = useState<string>(location.pathname)
 
   const menuItems: IMenuItem[] = [
     {
@@ -25,6 +35,10 @@ const Menu: React.FC = () => {
       key: PATH.billing,
     },
     {
+      label: t('Menu.SubscribtionMaker'),
+      key: PATH.subscribtionMaker,
+    },
+    {
       label: t('Menu.Messages'),
       key: PATH.messages,
     },
@@ -34,11 +48,37 @@ const Menu: React.FC = () => {
     },
   ]
 
+  const handleControlMenu = () => {
+    setMenuOpen(!isMenuOpen)
+  }
+
+  const handleClickMenu: MenuProps['onClick'] = (e) => {
+    setCurrentPath(e.key)
+    navigate(e.key)
+  }
+
   return (
-    <>
-      <DesktopMenu menuItems={menuItems} />
-      <MobileMenu menuItems={menuItems} />
-    </>
+    <div className="Menu-body">
+      <Logo />
+      <div className="Menu-body-rightSide">
+        <RightSideBtns />
+        <Button type="text" icon={<IconBurger />} onClick={handleControlMenu} />
+        <Drawer
+          title="Basic Drawer"
+          onClose={handleControlMenu}
+          open={isMenuOpen}
+        >
+          <AntdMenu
+            items={menuItems}
+            className="Menu-body-rightSide-menu"
+            selectedKeys={
+              location.pathname === PATH.profile ? undefined : [currentPath]
+            }
+            onClick={handleClickMenu}
+          />
+        </Drawer>
+      </div>
+    </div>
   )
 }
 

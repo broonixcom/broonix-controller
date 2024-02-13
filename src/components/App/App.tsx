@@ -5,6 +5,8 @@ import { Skeleton } from 'antd'
 import Router from '@components/Router'
 import Menu from '@components/Menu'
 
+import './AppStyles.scss'
+
 const App: React.FC = () => {
   return (
     <>
@@ -14,7 +16,9 @@ const App: React.FC = () => {
           <Skeleton.Input active size="large" style={{ width: '100vw' }} />
         }
       >
-        <Router />
+        <div className="App-body">
+          <Router />
+        </div>
       </Suspense>
     </>
   )

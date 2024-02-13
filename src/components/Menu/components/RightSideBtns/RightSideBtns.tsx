@@ -38,15 +38,15 @@ const RightSideBtns: React.FC = () => {
   }
 
   return (
-    <div className="LangSelector-body">
+    <div className="RightSideBtns-body">
       <Button
-        className="LangSelector-btn"
-        size="small"
+        className="RightSideBtns-body-btn"
         icon={<IconUserCircle />}
         onClick={handleClickProfile}
+        type="text"
       />
       <Dropdown menu={langMenuProps}>
-        <Button className="LangSelector-btn" size="small">
+        <Button className="RightSideBtns-body-btn" type="text">
           <Space>{currentLang}</Space>
         </Button>
       </Dropdown>

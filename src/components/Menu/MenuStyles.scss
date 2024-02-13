@@ -1,0 +1,25 @@
+@import '@lib/screens.scss';
+
+.Menu-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #0505050f;
+  margin-bottom: 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  height: 70px;
+
+  @include mobileScreen {
+    height: 50px;
+  }
+
+  &-rightSide {
+    display: flex;
+    align-items: center;
+
+    &-menu {
+      border-inline-end: none !important;
+    }
+  }
+}
