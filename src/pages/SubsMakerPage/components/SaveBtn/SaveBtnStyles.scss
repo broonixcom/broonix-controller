@@ -1,0 +1,14 @@
+@import '@lib/screens.scss';
+
+.SaveBtn-body {
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  @include mobileScreen {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

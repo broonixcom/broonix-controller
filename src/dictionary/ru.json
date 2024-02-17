@@ -4,28 +4,52 @@
     "Placeholder": "Меню"
   },
   "Button": {
-    "Add": "Добавить"
+    "Add": "Добавить",
+    "Close": "Закрыть",
+    "Cancel": "Отмена",
+    "Save": "Сохранить",
+    "Yes": "Да",
+    "No": "Нет"
+  },
+  "Prepositions": {
+    "Before": "До"
   },
   "Menu": {
+    "MenuTitle": "Меню",
     "Dashboard": "Дашборд",
     "Clients": "Клиенты",
     "Billing": "Биллинг",
-    "SubscribtionMaker": "Конструктор подписок",
+    "SubsMaker": "Конструктор подписок",
+    "Services": "Сервисы",
     "Messages": "Сообщения",
     "Admins": "Админы",
     "Profile": "Мой профиль"
   },
-  "SubscribtionMakerPage": {
+  "SubsMakerPage": {
+    "ServiceNav": "Сервис",
+    "RentalNav": "Прокат",
+    "PlaceNav": "Помещение",
+    "HotelNav": "Отель",
+    "CinemaNav": "Кинотеатр",
     "EmpCount": "Варианты количества сотрудников",
+    "StuffCount": "Варианты количества товаров",
+    "RoomsCount": "Варианты количества номеров",
+    "SeatsCount": "Варианты количества мест",
     "EmpCountPlaceholder": "Выберите варианты",
-    "AddNewSubscrition": "Подписки",
+    "Subscritions": "Подписки",
     "NoLimits": "Без ограничений",
     "LangSupport": "Поддерживаемые языки",
+    "AddLang": "Добавление языка",
+    "AddLangPlaceholder": "Впишите код языка, например RU",
+    "AddLangErrorLatin": "Язык должен быть указан латиницей",
+    "AddLangErrorSame": "Такой язык уже добавлен",
     "ModalTitle": "Формирование подписки",
     "SubcriptionName": "Название подписки",
     "SubcriptionDescription": "Короткое описание",
     "SubcriptionMonths": "Кол-во месяцев",
     "PriceNoDiscount": "Цена без дискаунта в месяц",
-    "PricePerEmployee": "Цена за подключенных сотрудников в месяц"
+    "PricePerQty": "Цена в месяц в зависимости от кол-ва",
+    "AddNewSubError": "Все поля должны быть заполнены",
+    "VisualSelectorPlaceholder": "Выбрать"
   }
 }

@@ -1,0 +1,10 @@
+.CreationModal_Qty-body {
+  &-marginBottom {
+    margin-bottom: 10px;
+
+    // ANT DESIGN HACKY CODE
+    .ant-input-group-addon {
+      width: 50px;
+    }
+  }
+}

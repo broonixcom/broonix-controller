@@ -1,0 +1,56 @@
+@import '@lib/screens.scss';
+
+.LangSupport-body {
+  p {
+    font-family: Montserrat-SemiBold;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-addBtn {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-langList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: 10px;
+    margin-left: 10px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    &-deleteBtn {
+      &:hover {
+        color: red !important;
+      }
+    }
+
+    &-btn {
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  &-modalInput {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

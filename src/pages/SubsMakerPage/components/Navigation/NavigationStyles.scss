@@ -1,0 +1,10 @@
+.Navigation-body {
+  margin-top: 5px;
+  margin-bottom: 10px;
+
+  // ANT DESIGN HACKY CODE
+  .ant-menu-item {
+    display: flex;
+    align-items: center;
+  }
+}

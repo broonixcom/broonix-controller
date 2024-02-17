@@ -8,7 +8,8 @@ const AuthPage = lazy(() => import('@pages/AuthPage'))
 const DashboardPage = lazy(() => import('@pages/DashboardPage'))
 const ClientsPage = lazy(() => import('@pages/ClientsPage'))
 const BillingPage = lazy(() => import('@pages/BillingPage'))
-const SubscribtionMakerPage = lazy(() => import('@pages/SubscribtionMakerPage'))
+const SubsMakerPage = lazy(() => import('@pages/SubsMakerPage'))
+const ServicesPage = lazy(() => import('@pages/ServicesPage'))
 const MessagesPage = lazy(() => import('@pages/MessagesPage'))
 const AdminsPage = lazy(() => import('@pages/AdminsPage'))
 const ProfilePage = lazy(() => import('@pages/ProfilePage'))
@@ -31,8 +32,12 @@ const ROUTER: IRoute[] = [
     page: BillingPage,
   },
   {
-    path: PATH.subscribtionMaker,
-    page: SubscribtionMakerPage,
+    path: PATH.subsMaker,
+    page: SubsMakerPage,
+  },
+  {
+    path: PATH.services,
+    page: ServicesPage,
   },
   {
     path: PATH.messages,

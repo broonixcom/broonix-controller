@@ -10,8 +10,8 @@ import { PATH } from '@components/Router/RouterConstants'
 import Logo from './components/Logo'
 import RightSideBtns from './components/RightSideBtns'
 
-import { IMenuItem } from './MenuTypes'
 import './MenuStyles.scss'
+import { IMenuItem } from './MenuTypes'
 
 const Menu: React.FC = () => {
   const { t } = useTranslation()
@@ -35,8 +35,12 @@ const Menu: React.FC = () => {
       key: PATH.billing,
     },
     {
-      label: t('Menu.SubscribtionMaker'),
-      key: PATH.subscribtionMaker,
+      label: t('Menu.SubsMaker'),
+      key: PATH.subsMaker,
+    },
+    {
+      label: t('Menu.Services'),
+      key: PATH.services,
     },
     {
       label: t('Menu.Messages'),
@@ -55,6 +59,7 @@ const Menu: React.FC = () => {
   const handleClickMenu: MenuProps['onClick'] = (e) => {
     setCurrentPath(e.key)
     navigate(e.key)
+    setMenuOpen(false)
   }
 
   return (
@@ -64,13 +69,14 @@ const Menu: React.FC = () => {
         <RightSideBtns />
         <Button type="text" icon={<IconBurger />} onClick={handleControlMenu} />
         <Drawer
-          title="Basic Drawer"
+          title={t('Menu.MenuTitle')}
           onClose={handleControlMenu}
           open={isMenuOpen}
+          className="Menu-body-rightSide-drawer"
         >
           <AntdMenu
             items={menuItems}
-            className="Menu-body-rightSide-menu"
+            className="Menu-body-rightSide-drawer-menu"
             selectedKeys={
               location.pathname === PATH.profile ? undefined : [currentPath]
             }
