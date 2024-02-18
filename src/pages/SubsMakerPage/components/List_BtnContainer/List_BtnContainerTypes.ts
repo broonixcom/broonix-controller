@@ -1,16 +1,14 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import { ISubsState } from '../../SubsMakerPageTypes'
+import { ISubsState, ISub } from '../../SubsMakerPageTypes'
 
-export interface ICreationModalProps {
-  nav: string
+export interface IList_BtnContainerProps {
   subsState: ISubsState
   setSubsState: Dispatch<SetStateAction<ISubsState>>
+  currentSub: ISub
+  i: number
   setChanged: Dispatch<SetStateAction<boolean>>
-  subForEdit?: number
   setSubForEdit: Dispatch<SetStateAction<number | undefined>>
-  isCreateModalOpened: boolean
   setCreateModalOpen: Dispatch<SetStateAction<boolean>>
-  isCreateModalRendered: boolean
   setCreateModalRender: Dispatch<SetStateAction<boolean>>
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Button, Popover, Modal, Input, message, Divider } from 'antd'
+import { Button, Popover, Modal, Input, message } from 'antd'
 import { IconTrash, IconPlaylistAdd } from '@tabler/icons-react'
 
 import './LangSupportStyles.scss'
@@ -50,18 +50,22 @@ const LangSupport: React.FC<ILangSupportProps> = ({
     if (supportedLang.find((lang) => lang === newLang)) {
       return messageApi.error(t('SubsMakerPage.AddLangErrorSame'))
     } else {
-
-      const newSubs = subs.map(sub => ({
-        ...sub, subInfo: {
+      const newSubs = subs.map((sub) => ({
+        ...sub,
+        subInfo: {
           ...sub.subInfo,
           [newLang]: {
             subName: undefined,
-            subDesc: undefined
-          }
-        }
+            subDesc: undefined,
+          },
+        },
       }))
 
-      setSubsState({ ...subsState, supportedLang: [...supportedLang, newLang], subs: newSubs })
+      setSubsState({
+        ...subsState,
+        supportedLang: [...supportedLang, newLang],
+        subs: newSubs,
+      })
       setChanged(true)
       setModalOpen(false)
       setNewLang('')
@@ -94,7 +98,6 @@ const LangSupport: React.FC<ILangSupportProps> = ({
 
   return (
     <div className="LangSupport-body">
-      <Divider />
       {contextHolder}
       <p>{t('SubsMakerPage.LangSupport')}</p>
       <Button

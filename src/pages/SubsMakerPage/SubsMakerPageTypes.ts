@@ -6,9 +6,10 @@ export interface ISubsState {
 
 export interface ISub {
   subInfo: {
-    [key: string]: { subName?: string; subDesc?: string }
+    [key: string]: { subName?: string; subDesc?: string; subTotal?: string }
   }
   subMonths: number
-  subNoDiscount: number
-  pricesPerQty: { [key: string]: number }
+  pricePerMonth?: number
+  pricesPerQty?: { [key: string]: number }
+  base?: boolean
 }

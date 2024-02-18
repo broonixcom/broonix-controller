@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { Select, Divider } from 'antd'
+import { Select } from 'antd'
 
 import { PATH } from '@components/Router/RouterConstants'
 
@@ -35,13 +35,13 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
       else return -1
     }
 
-    const newSubs = subs.map(sub => ({
+    const newSubs = subs.map((sub) => ({
       ...sub,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       pricesPerQty: value.sort(sortFoo).reduce((obj: any, i) => {
-        obj[i] = sub.pricesPerQty[i]
+        obj[i] = sub.pricesPerQty && sub.pricesPerQty[i]
         return obj
-      }, {})
+      }, {}),
     }))
 
     setSubsState({ ...subsState, qty: value.sort(sortFoo), subs: newSubs })
@@ -63,7 +63,6 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
 
   return (
     <div className="QtySelector-body">
-      <Divider />
       <p>{titleSelector()}</p>
       <Select
         className="QtySelector-body-counter"

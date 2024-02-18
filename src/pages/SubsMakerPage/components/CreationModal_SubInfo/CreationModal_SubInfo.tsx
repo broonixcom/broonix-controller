@@ -19,7 +19,8 @@ const CreationModal_SubInfo: React.FC<ICreationModal_SubInfoProps> = ({
     setLocalChanged(true)
 
     const lang = e.target.getAttribute('lang')
-    const field: 'subName' | 'subDesc' = e.target.getAttribute('name')
+    const field: 'subName' | 'subDesc' | 'subTotal' =
+      e.target.getAttribute('name')
     const value = e.target.value
 
     setLocalSub({
@@ -50,7 +51,7 @@ const CreationModal_SubInfo: React.FC<ICreationModal_SubInfoProps> = ({
               name="subName"
               lang={lang}
               onChange={handleSubInfo}
-              value={localSub?.subInfo?.[lang]?.subName}
+              value={localSub.subInfo?.[lang]?.subName}
             />
             <p>
               {t('SubsMakerPage.SubcriptionDescription')} {lang}
@@ -60,7 +61,17 @@ const CreationModal_SubInfo: React.FC<ICreationModal_SubInfoProps> = ({
               name="subDesc"
               lang={lang}
               onChange={handleSubInfo}
-              value={localSub?.subInfo?.[lang]?.subDesc}
+              value={localSub.subInfo?.[lang]?.subDesc}
+            />
+            <p>
+              {t('SubsMakerPage.TotalPriceText')} {lang}
+            </p>
+            <Input
+              className="CreationModal_SubInfo-body-marginBottom"
+              name="subTotal"
+              lang={lang}
+              onChange={handleSubInfo}
+              value={localSub.subInfo?.[lang]?.subTotal}
             />
           </div>
         ),

@@ -20,39 +20,46 @@ const CreationModal: React.FC<ICreationModalProps> = ({
   subsState,
   setSubsState,
   setChanged,
+  subForEdit,
+  setSubForEdit,
+  isCreateModalOpened,
+  setCreateModalOpen,
+  isCreateModalRendered,
+  setCreateModalRender,
 }) => {
   const { t } = useTranslation()
   const [messageApi, contextHolder] = message.useMessage()
 
   const { supportedLang, qty, subs } = subsState
 
-  const [isModalOpened, setModalOpen] = useState(false)
-  const [isModalRendered, setModalRender] = useState(false)
   const [localSub, setLocalSub] = useState<ISub>({} as ISub)
   const [localIsChanged, setLocalChanged] = useState(false)
 
   useEffect(() => {
+    if (subForEdit || subForEdit === 0) {
+      setLocalSub(subs[subForEdit])
+    } else {
+      const defaultPricePerEmp = qty.reduce((obj: any, emp: number) => {
+        obj[emp] = undefined
+        return obj
+      }, {})
 
-    const defaultPricePerEmp = qty.reduce((obj: any, emp: number) => {
-      obj[emp] = undefined
-      return obj
-    }, {})
+      const defaultSubInfo = supportedLang.reduce((obj: any, lang: string) => {
+        obj[lang] = {
+          subName: '',
+          subDesc: '',
+        }
+        return obj
+      }, {})
 
-    const defaultSubInfo = supportedLang.reduce((obj: any, lang: string) => {
-      obj[lang] = {
-        subName: '',
-        subDesc: '',
-      }
-      return obj
-    }, {})
-    
-    setLocalSub({
-      ...localSub,
-      pricesPerQty: defaultPricePerEmp,
-      subInfo: defaultSubInfo,
-    })
+      setLocalSub({
+        ...localSub,
+        pricesPerQty: defaultPricePerEmp,
+        subInfo: defaultSubInfo,
+      })
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalOpened, qty, supportedLang])
+  }, [isCreateModalOpened, qty, supportedLang])
 
   const isAddBtnDisabled = () => {
     if (!supportedLang.length) {
@@ -68,16 +75,17 @@ const CreationModal: React.FC<ICreationModalProps> = ({
   }
 
   const handleOpenModal = () => {
-    setModalOpen(true)
-    setModalRender(true)
+    setCreateModalRender(true)
+    setCreateModalOpen(true)
   }
 
   const handleCloseModal = () => {
-    setModalOpen(false)
+    setCreateModalOpen(false)
+    setSubForEdit(undefined)
   }
 
   const handleAfterCloseModal = () => {
-    setModalRender(false)
+    setCreateModalRender(false)
     setLocalSub({} as ISub)
   }
 
@@ -87,17 +95,25 @@ const CreationModal: React.FC<ICreationModalProps> = ({
     )
     const pricesCheck =
       nav !== PATH.subsMakerPlace &&
+      localSub.pricesPerQty &&
       Object.values(localSub.pricesPerQty).some((val) => !val)
 
-    if (langCheck || !localSub.subMonths || !localSub.subNoDiscount) {
+    if (langCheck || !localSub.subMonths) {
       return messageApi.error(t('SubsMakerPage.AddNewSubError'))
     }
     if (pricesCheck && nav !== PATH.subsMakerPlace) {
       return messageApi.error(t('SubsMakerPage.AddNewSubError'))
+    }
+    if (subForEdit || subForEdit === 0) {
+      subs.splice(subForEdit, 1, localSub)
+      setSubsState({ ...subsState, subs })
+      setChanged(true)
+      setCreateModalOpen(false)
+      setLocalChanged(false)
     } else {
       setSubsState({ ...subsState, subs: [...subs, localSub] })
       setChanged(true)
-      setModalOpen(false)
+      setCreateModalOpen(false)
       setLocalChanged(false)
     }
   }
@@ -115,10 +131,14 @@ const CreationModal: React.FC<ICreationModalProps> = ({
       >
         {t('Button.Add')}
       </Button>
-      {isModalRendered && (
+      {isCreateModalRendered && (
         <Modal
-          open={isModalOpened}
-          title={t('SubsMakerPage.ModalTitle')}
+          open={isCreateModalOpened}
+          title={t(
+            subForEdit || subForEdit === 0
+              ? 'SubsMakerPage.EditSubModalTitle'
+              : 'SubsMakerPage.CreateSubModalTitle',
+          )}
           onOk={handelAddSub}
           okText={t('Button.Add')}
           okButtonProps={{
@@ -133,7 +153,7 @@ const CreationModal: React.FC<ICreationModalProps> = ({
               {...{ supportedLang, localSub, setLocalSub, setLocalChanged }}
             />
             <CreationModal_BasePrice
-              {...{ localSub, setLocalSub, setLocalChanged }}
+              {...{ localSub, setLocalSub, setLocalChanged, nav }}
             />
             <CreationModal_Qty
               {...{ nav, qty, localSub, setLocalSub, setLocalChanged }}

@@ -3,16 +3,23 @@ import { useTranslation } from 'react-i18next'
 
 import { Radio, RadioChangeEvent, Select } from 'antd'
 
+import { PATH } from '@components/Router/RouterConstants'
+
 import './QtyVisualSelectorStyles.scss'
 import { IQtyVisualSelectorProps } from './QtyVisualSelectorTypes'
 
 const QtyVisualSelector: React.FC<IQtyVisualSelectorProps> = ({
   qty,
   subs,
+  nav,
   currentQtyState,
   setCurrentQtyState,
 }) => {
   const { t } = useTranslation()
+
+  if (nav === PATH.subsMakerPlace) {
+    return
+  }
 
   const handleChangeRadio = ({ target: { value } }: RadioChangeEvent) => {
     setCurrentQtyState(value)

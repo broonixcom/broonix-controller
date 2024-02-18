@@ -2,6 +2,7 @@
 
 .QtySelector-body {
   font-family: Montserrat-SemiBold;
+  width: 100%;
 
   p {
     margin-bottom: 10px;
@@ -11,13 +12,14 @@
     @include mobileScreen {
       margin-right: 0;
       margin-left: 0;
+      margin-top: 10px;
     }
   }
 
   &-counter {
-    width: 50%;
     margin-right: 10px;
     margin-left: 10px;
+    width: 80%;
 
     @include mobileScreen {
       width: 100%;

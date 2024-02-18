@@ -43,13 +43,20 @@
     "AddLangPlaceholder": "Впишите код языка, например RU",
     "AddLangErrorLatin": "Язык должен быть указан латиницей",
     "AddLangErrorSame": "Такой язык уже добавлен",
-    "ModalTitle": "Формирование подписки",
+    "CreateSubModalTitle": "Формирование подписки",
+    "EditSubModalTitle": "Редактирование подписки",
     "SubcriptionName": "Название подписки",
     "SubcriptionDescription": "Короткое описание",
+    "TotalPriceText": "Текст возле итоговой цены",
     "SubcriptionMonths": "Кол-во месяцев",
-    "PriceNoDiscount": "Цена без дискаунта в месяц",
-    "PricePerQty": "Цена в месяц в зависимости от кол-ва",
+    "PricePerMonth": "Цена за месяц",
+    "PricePerQty": "Цена за 1 месяц в зависимости от кол-ва",
     "AddNewSubError": "Все поля должны быть заполнены",
-    "VisualSelectorPlaceholder": "Выбрать"
+    "VisualSelectorPlaceholder": "Выбрать",
+    "PerMonth": "/ в месяц",
+    "DeleteModalQuestion": "Удалить подписку?",
+    "TooltipMakeSubBase": "Сделать подписку базовой",
+    "SavedSuccess": "Сохранено",
+    "SavedNotEnoughInfo": "Не все поля заполнены"
   }
 }
