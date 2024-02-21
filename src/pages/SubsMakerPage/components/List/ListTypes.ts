@@ -12,5 +12,4 @@ export interface IListProps {
   setSubForEdit: Dispatch<SetStateAction<number | undefined>>
   setCreateModalOpen: Dispatch<SetStateAction<boolean>>
   setCreateModalRender: Dispatch<SetStateAction<boolean>>
-  nav: string
 }

@@ -1,24 +1,24 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-
+import { useParams } from 'react-router-dom'
 import { Select } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
 
 import './QtySelectorStyles.scss'
 import { IQtySelectorProps } from './QtySelectorTypes'
 
 const QtySelector: React.FC<IQtySelectorProps> = ({
-  nav,
   subsState,
   setSubsState,
   setChanged,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
 
   const { qty, subs } = subsState
 
-  if (nav === PATH.subsMakerPlace) {
+  if (params.id === SUB_TYPE.place) {
     return
   }
 
@@ -49,12 +49,12 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
   }
 
   const titleSelector = () => {
-    switch (nav) {
-      case PATH.subsMakerService:
+    switch (params.id) {
+      case SUB_TYPE.service:
         return t('SubsMakerPage.EmpCount')
-      case PATH.subsMakerRental:
+      case SUB_TYPE.rental:
         return t('SubsMakerPage.StuffCount')
-      case PATH.subsMakerHotel:
+      case SUB_TYPE.hotel:
         return t('SubsMakerPage.RoomsCount')
       default:
         return t('SubsMakerPage.SeatsCount')

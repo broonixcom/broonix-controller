@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 
 import { Divider } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
 import Loader from '@components/Loader'
 
 import Navigation from './components/Navigation'
@@ -18,8 +17,6 @@ import './SubsMakerPageStyles.scss'
 import { INITIAL_STATE } from './SubsMakerPageConstants'
 
 const SubsMakerPage: React.FC = () => {
-  const [nav, setNav] = useState(PATH.subsMakerService)
-
   const [subsState, setSubsState] = useState(INITIAL_STATE)
   const [isChanged, setChanged] = useState(false)
   const [isAlarm, setAlarm] = useState(false)
@@ -62,8 +59,6 @@ const SubsMakerPage: React.FC = () => {
     <div className="SubsMakerPage-body">
       <Navigation
         {...{
-          nav,
-          setNav,
           setSubsState,
           setChanged,
           setCurrentQtyState,
@@ -71,17 +66,16 @@ const SubsMakerPage: React.FC = () => {
         }}
       />
       <Loader isLoading={false} />
-      <SaveBtn {...{ isChanged, nav, subsState }} />
+      <SaveBtn {...{ isChanged, subsState }} />
       <Divider />
       <div className="SubsMakerPage-body-flexContainer">
         <LangSupport
           {...{ subsState, setSubsState, setChanged, setCurrentLangState }}
         />
-        <QtySelector {...{ nav, subsState, setSubsState, setChanged }} />
+        <QtySelector {...{ subsState, setSubsState, setChanged }} />
       </div>
       <CreationModal
         {...{
-          nav,
           subsState,
           setSubsState,
           setChanged,
@@ -105,7 +99,6 @@ const SubsMakerPage: React.FC = () => {
         {...{
           currentQtyState,
           setCurrentQtyState,
-          nav,
           subs: subsState.subs,
           qty: subsState.qty,
         }}
@@ -121,7 +114,6 @@ const SubsMakerPage: React.FC = () => {
           setSubForEdit,
           setCreateModalOpen,
           setCreateModalRender,
-          nav,
         }}
       />
     </div>

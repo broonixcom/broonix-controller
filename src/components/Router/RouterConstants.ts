@@ -4,13 +4,12 @@ export const PATH = {
   clients: '/clients',
   billing: '/billing',
   subsMaker: '/subs-maker',
-  subsMakerService: '/subs-maker/service',
-  subsMakerRental: '/subs-maker/rental',
-  subsMakerPlace: '/subs-maker/place',
-  subsMakerHotel: '/subs-maker/hotel',
-  subsMakerCinema: '/subs-maker/cinema',
   services: '/services',
   messages: '/messages',
   admins: '/admins',
   profile: '/profile',
+}
+
+export const PARAM = {
+  id: 'id',
 }

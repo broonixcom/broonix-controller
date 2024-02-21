@@ -1,9 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { Divider, Input } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
 
 import './CreationModal_BasePriceStyles.scss'
 import { ICreationModal_BasePriceProps } from './CreationModal_BasePriceTypes'
@@ -12,9 +13,9 @@ const CreationModal_BasePrice: React.FC<ICreationModal_BasePriceProps> = ({
   localSub,
   setLocalSub,
   setLocalChanged,
-  nav,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleBasePrice = (e: any) => {
@@ -47,7 +48,7 @@ const CreationModal_BasePrice: React.FC<ICreationModal_BasePriceProps> = ({
         onChange={handleBasePrice}
         value={localSub.subMonths}
       />
-      {nav === PATH.subsMakerPlace && (
+      {params.id === SUB_TYPE.place && (
         <>
           <p>{t('SubsMakerPage.PricePerMonth')}</p>
           <Input

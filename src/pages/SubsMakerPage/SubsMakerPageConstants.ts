@@ -74,3 +74,11 @@ export const INITIAL_STATE: ISubsState = {
   qty: [],
   subs: [],
 }
+
+export const SUB_TYPE = {
+  service: 'service',
+  rental: 'rental',
+  place: 'place',
+  hotel: 'hotel',
+  cinema: 'cinema',
+}

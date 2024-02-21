@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { Button, Modal, Divider, message } from 'antd'
 import { IconPlaylistAdd } from '@tabler/icons-react'
 
-import { PATH } from '@components/Router/RouterConstants'
-
+import { SUB_TYPE } from '../..//SubsMakerPageConstants'
 import { ISub } from '../../SubsMakerPageTypes'
 import CreationModal_SubInfo from '../CreationModal_SubInfo'
 import CreationModal_BasePrice from '../CreationModal_BasePrice'
@@ -16,7 +16,6 @@ import './CreationModalStyles.scss'
 import { ICreationModalProps } from './CreationModalTypes'
 
 const CreationModal: React.FC<ICreationModalProps> = ({
-  nav,
   subsState,
   setSubsState,
   setChanged,
@@ -28,6 +27,7 @@ const CreationModal: React.FC<ICreationModalProps> = ({
   setCreateModalRender,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
   const [messageApi, contextHolder] = message.useMessage()
 
   const { supportedLang, qty, subs } = subsState
@@ -65,7 +65,7 @@ const CreationModal: React.FC<ICreationModalProps> = ({
     if (!supportedLang.length) {
       return true
     }
-    if (nav === PATH.subsMakerPlace) {
+    if (params.id === SUB_TYPE.place) {
       return false
     }
     if (!qty.length) {
@@ -94,14 +94,14 @@ const CreationModal: React.FC<ICreationModalProps> = ({
       ({ subDesc, subName }) => !subDesc || !subName,
     )
     const pricesCheck =
-      nav !== PATH.subsMakerPlace &&
+      params.id !== SUB_TYPE.place &&
       localSub.pricesPerQty &&
       Object.values(localSub.pricesPerQty).some((val) => !val)
 
     if (langCheck || !localSub.subMonths) {
       return messageApi.error(t('SubsMakerPage.AddNewSubError'))
     }
-    if (pricesCheck && nav !== PATH.subsMakerPlace) {
+    if (pricesCheck && params.id !== SUB_TYPE.place) {
       return messageApi.error(t('SubsMakerPage.AddNewSubError'))
     }
     if (subForEdit || subForEdit === 0) {
@@ -153,10 +153,10 @@ const CreationModal: React.FC<ICreationModalProps> = ({
               {...{ supportedLang, localSub, setLocalSub, setLocalChanged }}
             />
             <CreationModal_BasePrice
-              {...{ localSub, setLocalSub, setLocalChanged, nav }}
+              {...{ localSub, setLocalSub, setLocalChanged }}
             />
             <CreationModal_Qty
-              {...{ nav, qty, localSub, setLocalSub, setLocalChanged }}
+              {...{ qty, localSub, setLocalSub, setLocalChanged }}
             />
           </div>
         </Modal>

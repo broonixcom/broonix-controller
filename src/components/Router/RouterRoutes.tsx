@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react'
 
-import { PATH } from './RouterConstants'
+import { PATH, PARAM } from './RouterConstants'
 import { IRoute } from './RouterTypes'
 
 const AuthPage = lazy(() => import('@pages/AuthPage'))
@@ -34,6 +34,7 @@ const ROUTER: IRoute[] = [
   {
     path: PATH.subsMaker,
     page: SubsMakerPage,
+    params: [PARAM.id],
   },
   {
     path: PATH.services,

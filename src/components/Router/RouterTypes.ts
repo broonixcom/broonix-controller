@@ -4,4 +4,5 @@ export interface IRoute {
   path: string
   // eslint-disable-next-line @typescript-eslint/ban-types
   page: FunctionComponent<{}>
+  params?: string[]
 }

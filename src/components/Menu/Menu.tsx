@@ -6,6 +6,7 @@ import { Button, Drawer, Menu as AntdMenu, MenuProps } from 'antd'
 import { IconBurger } from '@tabler/icons-react'
 
 import { PATH } from '@components/Router/RouterConstants'
+import { SUB_TYPE } from '@pages/SubsMakerPage/SubsMakerPageConstants'
 
 import Logo from './components/Logo'
 import RightSideBtns from './components/RightSideBtns'
@@ -36,7 +37,7 @@ const Menu: React.FC = () => {
     },
     {
       label: t('Menu.SubsMaker'),
-      key: PATH.subsMaker,
+      key: PATH.subsMaker + '/' + SUB_TYPE.service,
     },
     {
       label: t('Menu.Services'),

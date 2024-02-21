@@ -1,11 +1,11 @@
 import React from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { Card, Divider } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
-
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
 import List_BtnContainer from '../List_BtnContainer'
 import { ISub } from '../../SubsMakerPageTypes'
 
@@ -22,9 +22,9 @@ const List: React.FC<IListProps> = ({
   setSubForEdit,
   setCreateModalOpen,
   setCreateModalRender,
-  nav,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
 
   const { qty, subs } = subsState
 
@@ -33,7 +33,7 @@ const List: React.FC<IListProps> = ({
   }
 
   const pricePerMonth = (sub: ISub) => {
-    if (nav === PATH.subsMakerPlace) {
+    if (params.id === SUB_TYPE.place) {
       return `$${sub.pricePerMonth}`
     } else {
       return `$${sub.pricesPerQty?.[currentQtyState ?? qty[0]]}`
@@ -43,7 +43,7 @@ const List: React.FC<IListProps> = ({
   const noDiscountPrice = (subMonths: number) => {
     const baseSub = subs.find((sub) => sub.base)
 
-    if (nav === PATH.subsMakerPlace && baseSub && baseSub.pricePerMonth) {
+    if (params.id === SUB_TYPE.place && baseSub && baseSub.pricePerMonth) {
       return `$${(subMonths * baseSub.pricePerMonth).toFixed(2)}`
     }
     if (baseSub) {
@@ -63,7 +63,7 @@ const List: React.FC<IListProps> = ({
     pricesPerQty,
     subInfo,
   }: ISub) => {
-    if (nav === PATH.subsMakerPlace && pricePerMonth) {
+    if (params.id === SUB_TYPE.place && pricePerMonth) {
       return `$${pricePerMonth * subMonths}`
     }
     if (pricesPerQty) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import { Menu, MenuProps } from 'antd'
 import {
@@ -12,50 +13,52 @@ import {
 
 import { PATH } from '@components/Router/RouterConstants'
 
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
+
 import './NavigationStyles.scss'
 import { INavigationProps } from './NavigationTypes'
 
 const Navigation: React.FC<INavigationProps> = ({
-  nav,
-  setNav,
   initialSubState,
   setSubsState,
   setChanged,
   setCurrentQtyState,
 }) => {
   const { t } = useTranslation()
+  const navigate = useNavigate()
+  const params = useParams()
 
   const handleClickToMenu: MenuProps['onClick'] = (e) => {
     setChanged(false)
     setCurrentQtyState(null)
-    setNav(e.key)
+    navigate(PATH.subsMaker + '/' + e.key)
     setSubsState(initialSubState)
   }
 
   const navItems = [
     {
       label: t('SubsMakerPage.ServiceNav'),
-      key: PATH.subsMakerService,
+      key: SUB_TYPE.service,
       icon: <IconClockStar />,
     },
     {
       label: t('SubsMakerPage.RentalNav'),
-      key: PATH.subsMakerRental,
+      key: SUB_TYPE.rental,
       icon: <IconReplace />,
     },
     {
       label: t('SubsMakerPage.PlaceNav'),
-      key: PATH.subsMakerPlace,
+      key: SUB_TYPE.place,
       icon: <IconMapPin />,
     },
     {
       label: t('SubsMakerPage.HotelNav'),
-      key: PATH.subsMakerHotel,
+      key: SUB_TYPE.hotel,
       icon: <IconBuildingSkyscraper />,
     },
     {
       label: t('SubsMakerPage.CinemaNav'),
-      key: PATH.subsMakerCinema,
+      key: SUB_TYPE.cinema,
       icon: <IconMovie />,
     },
   ]
@@ -65,7 +68,7 @@ const Navigation: React.FC<INavigationProps> = ({
       <Menu
         mode="horizontal"
         items={navItems}
-        selectedKeys={[nav]}
+        selectedKeys={[params.id ?? SUB_TYPE.service]}
         onClick={handleClickToMenu}
       />
     </div>

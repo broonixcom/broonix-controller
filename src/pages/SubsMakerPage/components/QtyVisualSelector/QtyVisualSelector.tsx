@@ -1,9 +1,10 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { Radio, RadioChangeEvent, Select } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
 
 import './QtyVisualSelectorStyles.scss'
 import { IQtyVisualSelectorProps } from './QtyVisualSelectorTypes'
@@ -11,13 +12,13 @@ import { IQtyVisualSelectorProps } from './QtyVisualSelectorTypes'
 const QtyVisualSelector: React.FC<IQtyVisualSelectorProps> = ({
   qty,
   subs,
-  nav,
   currentQtyState,
   setCurrentQtyState,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
 
-  if (nav === PATH.subsMakerPlace) {
+  if (params.id === SUB_TYPE.place) {
     return
   }
 

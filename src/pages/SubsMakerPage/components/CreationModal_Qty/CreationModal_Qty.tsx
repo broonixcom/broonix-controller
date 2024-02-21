@@ -1,23 +1,24 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { useParams } from 'react-router-dom'
 
 import { Divider, Input } from 'antd'
 
-import { PATH } from '@components/Router/RouterConstants'
+import { SUB_TYPE } from '@pages/SubsMakerPage/SubsMakerPageConstants'
 
 import './CreationModal_QtyStyles.scss'
 import { ICreationModal_QtyProps } from './CreationModal_QtyTypes'
 
 const CreationModal_Qty: React.FC<ICreationModal_QtyProps> = ({
-  nav,
   qty,
   localSub,
   setLocalSub,
   setLocalChanged,
 }) => {
   const { t } = useTranslation()
+  const params = useParams()
 
-  if (nav === PATH.subsMakerPlace) {
+  if (params.id === SUB_TYPE.place) {
     return
   }
 
