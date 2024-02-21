@@ -25,3 +25,10 @@ dist-ssr
 
 # Firebase files
 *.env*
+.firebase/
+.github/
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
+firebase.json
