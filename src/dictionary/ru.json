@@ -57,6 +57,7 @@
     "DeleteModalQuestion": "Удалить подписку?",
     "TooltipMakeSubBase": "Сделать подписку базовой",
     "SavedSuccess": "Сохранено",
-    "SavedNotEnoughInfo": "Не все поля заполнены"
+    "SavedNotEnoughInfo": "Не все поля заполнены",
+    "SavedWarningNoSubs": "Нет подписок"
   }
 }

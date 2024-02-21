@@ -20,6 +20,7 @@
     align-items: center;
     margin-right: 10px;
     margin-left: 10px;
+    width: 150px;
 
     @include mobileScreen {
       margin-right: 0;

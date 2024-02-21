@@ -29,6 +29,9 @@ const SaveBtn: React.FC<ISaveBtnProps> = ({ isChanged, nav, subsState }) => {
           pricesPerQty && Object.values(pricesPerQty).some((price) => !price),
       )
 
+    if(!subs.length){
+      return messageApi.warning(t('SubsMakerPage.SavedWarningNoSubs'))
+    } 
     if (langCheck || pricesCheck) {
       return messageApi.error(t('SubsMakerPage.SavedNotEnoughInfo'))
     }
