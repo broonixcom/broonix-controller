@@ -1,7 +1,13 @@
 import React from 'react'
 
+import Layout from '@components/Layout'
+
 const BillingPage: React.FC = () => {
-  return <div>BillingPage</div>
+  return (
+    <Layout>
+      <div>BillingPage</div>
+    </Layout>
+  )
 }
 
 export default BillingPage

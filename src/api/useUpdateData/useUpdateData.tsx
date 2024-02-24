@@ -3,10 +3,12 @@ import { doc, updateDoc, serverTimestamp } from 'firebase/firestore'
 
 import { firebaseDB } from '@src/firebase'
 
+import { RES_CODE } from '@api/apiConstants'
+
 import { IUpdatedDataVar, IPreparedUpdatedData } from './useUpdateDataTypes'
 
 const useUpdateData = () => {
-  const [status, setStatus] = useState<boolean>()
+  const [status, setStatus] = useState<number>()
   const [isLoading, setLoading] = useState(false)
 
   const foo: IUpdatedDataVar = async (collection, dataID, data) => {
@@ -20,11 +22,11 @@ const useUpdateData = () => {
       }
 
       await updateDoc(doc(firebaseDB, collection, dataID), preparedUpdatedData)
-      setStatus(true)
+      setStatus(RES_CODE.ok)
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setStatus(false)
+      setStatus(RES_CODE.error)
       console.log(error.message)
     } finally {
       setLoading(false)

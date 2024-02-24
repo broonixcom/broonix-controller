@@ -37,6 +37,7 @@
     "SeatsCount": "Варианты количества мест",
     "EmpCountPlaceholder": "Выберите варианты",
     "Subscritions": "Подписки",
+    "QtyError": "Нельзя удалить элемент, если он единственный",
     "NoLimits": "Без ограничений",
     "LangSupport": "Поддерживаемые языки",
     "AddLang": "Добавление языка",
@@ -58,6 +59,7 @@
     "TooltipMakeSubBase": "Сделать подписку базовой",
     "SavedSuccess": "Сохранено",
     "SavedNotEnoughInfo": "Не все поля заполнены",
-    "SavedWarningNoSubs": "Нет подписок"
+    "SavedWarningNoSubs": "Нет подписок",
+    "SavedError": "Не сохранено, что-то пошло не так"
   }
 }

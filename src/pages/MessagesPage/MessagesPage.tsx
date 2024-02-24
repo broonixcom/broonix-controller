@@ -1,7 +1,13 @@
 import React from 'react'
 
+import Layout from '@components/Layout'
+
 const MessagesPage: React.FC = () => {
-  return <div>MessagesPage</div>
+  return (
+    <Layout>
+      <div>MessagesPage</div>
+    </Layout>
+  )
 }
 
 export default MessagesPage

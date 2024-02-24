@@ -1,7 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
-import { Select } from 'antd'
+
+import { Select, message } from 'antd'
 
 import { SUB_TYPE } from '../../SubsMakerPageConstants'
 
@@ -15,6 +16,7 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
 }) => {
   const { t } = useTranslation()
   const params = useParams()
+  const [messageApi, contextHolder] = message.useMessage()
 
   const { qty, subs } = subsState
 
@@ -30,6 +32,10 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
   options.push({ value: 999, label: t('SubsMakerPage.NoLimits') })
 
   const handleSelectQty = (value: number[]) => {
+    if (value.length === 0) {
+      return messageApi.error(t('SubsMakerPage.QtyError'))
+    }
+
     const sortFoo = (num1: number, num2: number) => {
       if (num1 > num2) return 1
       else return -1
@@ -63,6 +69,7 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
 
   return (
     <div className="QtySelector-body">
+      {contextHolder}
       <p>{titleSelector()}</p>
       <Select
         className="QtySelector-body-counter"

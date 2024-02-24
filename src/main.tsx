@@ -1,20 +1,20 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 
-import App from '@components/App'
 import '@dictionary/i18n'
 import theme from '@lib/theme'
+import Loader from '@components/Loader'
+import Router from '@components/Router'
 
 import './styles.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ConfigProvider theme={theme}>
-        <App />
-      </ConfigProvider>
-    </BrowserRouter>
+    <ConfigProvider theme={theme}>
+      <Suspense fallback={<Loader isLoading={true} />}>
+        <Router />
+      </Suspense>
+    </ConfigProvider>
   </React.StrictMode>,
 )

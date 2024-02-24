@@ -16,8 +16,7 @@ const useReadData = () => {
 
     try {
       const dataSnap = await getDoc(doc(firebaseDB, collection, dataID))
-      dataSnap.exists() ? setData(dataSnap.data()) : Error
-      setStatus(true)
+      return dataSnap.exists() ? setData(dataSnap.data()) : Error
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       setStatus(false)

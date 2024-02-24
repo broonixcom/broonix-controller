@@ -66,7 +66,7 @@ const List: React.FC<IListProps> = ({
     if (params.id === SUB_TYPE.place && pricePerMonth) {
       return `$${pricePerMonth * subMonths}`
     }
-    if (pricesPerQty) {
+    if (pricesPerQty && currentLangState) {
       return `$${(pricesPerQty?.[currentQtyState ?? qty[0]] * subMonths).toFixed(2)} ${subInfo[currentLangState].subTotal}`
     }
   }

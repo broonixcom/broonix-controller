@@ -88,6 +88,7 @@ const LangSupport: React.FC<ILangSupportProps> = ({
       }
     })
 
+    setChanged(true)
     setCurrentLangState(newSupportedLang[0])
     setSubsState({
       ...subsState,
