@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate, useLocation } from 'react-router-dom'
 
 import { Divider } from 'antd'
 
 import Loader from '@components/Loader'
 import useReadData from '@api/useReadData'
-import { API_COLLECTION } from '@api/apiConstants'
 import Layout from '@components/Layout'
+import { API_COLLECTION } from '@api/apiConstants'
+import { PATH } from '@components/Router/RouterConstants'
 
 import Navigation from './components/Navigation'
 import SaveBtn from './components/SaveBtn'
@@ -16,13 +17,16 @@ import CreationModal from './components/CreationModal'
 import LangTabs from './components/LangTabs'
 import QtyVisualSelector from './components/QtyVisualSelector'
 import List from './components/List'
+import BlockerModal from './components/BlockerModal'
 
 import './SubsMakerPageStyles.scss'
 import { ISubsState } from './SubsMakerPageTypes'
-import { INITIAL_STATE } from './SubsMakerPageConstants'
+import { INITIAL_STATE, SUB_TYPE } from './SubsMakerPageConstants'
 
 const SubsMakerPage: React.FC = () => {
   const params = useParams()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const [subsState, setSubsState] = useState(INITIAL_STATE)
   const [isChanged, setChanged] = useState(false)
@@ -39,6 +43,12 @@ const SubsMakerPage: React.FC = () => {
   const [isItNew, setItNew] = useState(false)
 
   const readData = useReadData()
+
+  useEffect(() => {
+    if (location.pathname === PATH.subsMaker)
+      navigate(location.pathname + '/' + SUB_TYPE.service)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname])
 
   useEffect(() => {
     params.id && readData.foo(API_COLLECTION.subscriptions, params.id)
@@ -72,17 +82,20 @@ const SubsMakerPage: React.FC = () => {
 
   return (
     <Layout>
+      <BlockerModal
+        {...{ isChanged, setChanged, setCurrentQtyState, setSubsState }}
+      />
       <div className="SubsMakerPage-body">
         <Navigation
           {...{
             setSubsState,
+            isChanged,
             setChanged,
             setCurrentQtyState,
-            initialSubState: INITIAL_STATE,
           }}
         />
         <Loader isLoading={readData.isLoading} />
-        <SaveBtn {...{ isChanged, subsState, isItNew }} />
+        <SaveBtn {...{ isChanged, setChanged, subsState, isItNew }} />
         <Divider />
         <div className="SubsMakerPage-body-flexContainer">
           <LangSupport

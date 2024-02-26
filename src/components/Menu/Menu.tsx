@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
 
@@ -6,7 +6,6 @@ import { Button, Drawer, Menu as AntdMenu, MenuProps } from 'antd'
 import { IconBurger } from '@tabler/icons-react'
 
 import { PATH } from '@components/Router/RouterConstants'
-import { SUB_TYPE } from '@pages/SubsMakerPage/SubsMakerPageConstants'
 
 import Logo from './components/Logo'
 import RightSideBtns from './components/RightSideBtns'
@@ -21,6 +20,12 @@ const Menu: React.FC = () => {
 
   const [isMenuOpen, setMenuOpen] = useState(false)
   const [currentPath, setCurrentPath] = useState<string>(location.pathname)
+
+  useEffect(() => {
+    location.pathname.split('/').length > 2 &&
+      setCurrentPath(location.pathname.replace(/\/[^/]*$/, ''))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const menuItems: IMenuItem[] = [
     {
@@ -37,7 +42,7 @@ const Menu: React.FC = () => {
     },
     {
       label: t('Menu.SubsMaker'),
-      key: PATH.subsMaker + '/' + SUB_TYPE.service,
+      key: PATH.subsMaker,
     },
     {
       label: t('Menu.Services'),
@@ -58,9 +63,9 @@ const Menu: React.FC = () => {
   }
 
   const handleClickMenu: MenuProps['onClick'] = (e) => {
+    setMenuOpen(false)
     setCurrentPath(e.key)
     navigate(e.key)
-    setMenuOpen(false)
   }
 
   return (

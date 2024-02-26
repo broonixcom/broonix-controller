@@ -13,13 +13,13 @@ import {
 
 import { PATH } from '@components/Router/RouterConstants'
 
-import { SUB_TYPE } from '../../SubsMakerPageConstants'
+import { SUB_TYPE, INITIAL_STATE } from '../../SubsMakerPageConstants'
 
 import './NavigationStyles.scss'
 import { INavigationProps } from './NavigationTypes'
 
 const Navigation: React.FC<INavigationProps> = ({
-  initialSubState,
+  isChanged,
   setSubsState,
   setChanged,
   setCurrentQtyState,
@@ -29,10 +29,13 @@ const Navigation: React.FC<INavigationProps> = ({
   const params = useParams()
 
   const handleClickToMenu: MenuProps['onClick'] = (e) => {
-    setChanged(false)
-    setCurrentQtyState(null)
     navigate(PATH.subsMaker + '/' + e.key)
-    setSubsState(initialSubState)
+
+    if (!isChanged) {
+      setChanged(false)
+      setCurrentQtyState(null)
+      setSubsState(INITIAL_STATE)
+    }
   }
 
   const navItems = [

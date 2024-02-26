@@ -42,7 +42,8 @@
     "LangSupport": "Поддерживаемые языки",
     "AddLang": "Добавление языка",
     "AddLangPlaceholder": "Впишите код языка, например RU",
-    "AddLangErrorLatin": "Язык должен быть указан латиницей",
+    "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
+    "AddLangErrorLatin": "Разрешено писать только латиницей",
     "AddLangErrorSame": "Такой язык уже добавлен",
     "CreateSubModalTitle": "Формирование подписки",
     "EditSubModalTitle": "Редактирование подписки",
@@ -60,6 +61,7 @@
     "SavedSuccess": "Сохранено",
     "SavedNotEnoughInfo": "Не все поля заполнены",
     "SavedWarningNoSubs": "Нет подписок",
-    "SavedError": "Не сохранено, что-то пошло не так"
+    "SavedError": "Не сохранено, что-то пошло не так",
+    "BlockerTitle": "Вы не сохранили данные, точно продолжить?"
   }
 }

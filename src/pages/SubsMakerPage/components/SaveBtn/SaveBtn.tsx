@@ -16,6 +16,7 @@ import { ISaveBtnProps } from './SaveBtnTypes'
 
 const SaveBtn: React.FC<ISaveBtnProps> = ({
   isChanged,
+  setChanged,
   subsState,
   isItNew,
 }) => {
@@ -58,6 +59,7 @@ const SaveBtn: React.FC<ISaveBtnProps> = ({
     if (langCheck || pricesCheck) {
       return messageApi.error(t('SubsMakerPage.SavedNotEnoughInfo'))
     }
+    setChanged(false)
     if (isItNew && params.id) {
       await createData.foo(API_COLLECTION.subscriptions, params.id, subsState)
       return

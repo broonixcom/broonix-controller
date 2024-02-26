@@ -38,7 +38,11 @@ const LangSupport: React.FC<ILangSupportProps> = ({
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChangeInputLang = (e: any) => {
-    setNewLang(e.target.value.toUpperCase())
+    if (e.target.value.length >= 3) {
+      return messageApi.error(t('SubsMakerPage.AddLangErrorLetterCount'))
+    } else {
+      setNewLang(e.target.value.toUpperCase())
+    }
   }
 
   const handleAddLang = () => {
