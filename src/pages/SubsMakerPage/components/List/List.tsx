@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom'
 
 import { Card, Divider } from 'antd'
 
-import { SUB_TYPE } from '../../SubsMakerPageConstants'
 import List_BtnContainer from '../List_BtnContainer'
+import { SUB_TYPE } from '../../SubsMakerPageConstants'
 import { ISub } from '../../SubsMakerPageTypes'
 
 import './ListStyles.scss'

@@ -6,6 +6,7 @@ import { Divider } from 'antd'
 import Loader from '@components/Loader'
 import useReadData from '@api/useReadData'
 import Layout from '@components/Layout'
+import BlockerModal from '@components/BlockerModal'
 import { API_COLLECTION } from '@api/apiConstants'
 import { PATH } from '@components/Router/RouterConstants'
 
@@ -17,7 +18,6 @@ import CreationModal from './components/CreationModal'
 import LangTabs from './components/LangTabs'
 import QtyVisualSelector from './components/QtyVisualSelector'
 import List from './components/List'
-import BlockerModal from './components/BlockerModal'
 
 import './SubsMakerPageStyles.scss'
 import { ISubsState } from './SubsMakerPageTypes'
@@ -80,11 +80,15 @@ const SubsMakerPage: React.FC = () => {
     setCurrentLangState(subsState.supportedLang[0])
   }, [subsState])
 
+  const fooBlockerModal = () => {
+    setChanged(false)
+    setCurrentQtyState(null)
+    setSubsState(INITIAL_STATE)
+  }
+
   return (
     <Layout>
-      <BlockerModal
-        {...{ isChanged, setChanged, setCurrentQtyState, setSubsState }}
-      />
+      <BlockerModal verify={isChanged} foo={fooBlockerModal} />
       <div className="SubsMakerPage-body">
         <Navigation
           {...{

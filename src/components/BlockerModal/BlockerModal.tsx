@@ -4,23 +4,16 @@ import { useTranslation } from 'react-i18next'
 
 import { Modal } from 'antd'
 
-import { INITIAL_STATE } from '../../SubsMakerPageConstants'
-
 import { IBlockerModalProps } from './BlockerModalTypes'
 
-const BlockerModal: React.FC<IBlockerModalProps> = ({
-  isChanged,
-  setChanged,
-  setCurrentQtyState,
-  setSubsState,
-}) => {
+const BlockerModal: React.FC<IBlockerModalProps> = ({ verify, foo }) => {
   const { t } = useTranslation()
 
   const [isModalOpened, setModalOpened] = useState(false)
   const [isModalRendered, setModalRendered] = useState(false)
 
   const blocker = useBlocker(
-    (path) => path.currentLocation !== path.nextLocation && isChanged,
+    (path) => path.currentLocation !== path.nextLocation && verify,
   )
 
   useEffect(() => {
@@ -37,9 +30,7 @@ const BlockerModal: React.FC<IBlockerModalProps> = ({
   const handleOk = () => {
     blocker.proceed && blocker.proceed()
     setModalOpened(false)
-    setChanged(false)
-    setCurrentQtyState(null)
-    setSubsState(INITIAL_STATE)
+    foo && foo()
   }
 
   const handleCancel = () => {

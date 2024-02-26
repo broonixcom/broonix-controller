@@ -6,11 +6,11 @@ import { useParams } from 'react-router-dom'
 import { Button, Modal, Divider, message } from 'antd'
 import { IconPlaylistAdd } from '@tabler/icons-react'
 
-import { SUB_TYPE } from '../..//SubsMakerPageConstants'
-import { ISub } from '../../SubsMakerPageTypes'
 import CreationModal_SubInfo from '../CreationModal_SubInfo'
 import CreationModal_BasePrice from '../CreationModal_BasePrice'
 import CreationModal_Qty from '../CreationModal_Qty'
+import { SUB_TYPE } from '../..//SubsMakerPageConstants'
+import { ISub } from '../../SubsMakerPageTypes'
 
 import './CreationModalStyles.scss'
 import { ICreationModalProps } from './CreationModalTypes'
