@@ -23,6 +23,7 @@ const Navigation: React.FC<INavigationProps> = ({
   setSubsState,
   setChanged,
   setCurrentQtyState,
+  setItNew,
 }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -33,6 +34,7 @@ const Navigation: React.FC<INavigationProps> = ({
 
     if (!isChanged) {
       setChanged(false)
+      setItNew(false)
       setCurrentQtyState(null)
       setSubsState(INITIAL_STATE)
     }

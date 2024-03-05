@@ -6,4 +6,5 @@ export interface ISaveBtnProps {
   setChanged: Dispatch<SetStateAction<boolean>>
   subsState: ISubsState
   isItNew: boolean
+  setItNew: Dispatch<SetStateAction<boolean>>
 }

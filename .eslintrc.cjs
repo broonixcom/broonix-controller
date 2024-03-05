@@ -18,6 +18,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'import/prefer-default-export': ['off'],
+    '@typescript-eslint/no-explicit-any': ['off'],
   },
   settings: {
     react: {

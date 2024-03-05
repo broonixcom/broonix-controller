@@ -1,0 +1,25 @@
+.ErrorPage-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 500px;
+
+  &-iconsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+
+    svg {
+      height: 200px;
+      width: 200px;
+    }
+  }
+
+  p {
+    font-family: Montserrat-SemiBold;
+    font-size: 20px;
+    text-align: center;
+  }
+}

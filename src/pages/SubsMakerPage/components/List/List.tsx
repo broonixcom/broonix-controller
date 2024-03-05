@@ -79,6 +79,7 @@ const List: React.FC<IListProps> = ({
           className={clsx({
             ['List-body-sub']: true,
             ['List-body-subAlarm']: isAlarm,
+            ['List-body-subFocused']: sub.focus,
           })}
         >
           <p className="List-body-sub-name">

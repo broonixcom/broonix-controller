@@ -7,4 +7,5 @@ export interface INavigationProps {
   setSubsState: Dispatch<SetStateAction<ISubsState>>
   setChanged: Dispatch<SetStateAction<boolean>>
   setCurrentQtyState: Dispatch<SetStateAction<number | null>>
+  setItNew: Dispatch<SetStateAction<boolean>>
 }

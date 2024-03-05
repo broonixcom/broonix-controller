@@ -19,6 +19,7 @@ const SaveBtn: React.FC<ISaveBtnProps> = ({
   setChanged,
   subsState,
   isItNew,
+  setItNew,
 }) => {
   const { t } = useTranslation()
   const params = useParams()
@@ -28,17 +29,17 @@ const SaveBtn: React.FC<ISaveBtnProps> = ({
   const updateData = useUpdateData()
 
   useEffect(() => {
-    if (
-      createData.status === RES_CODE.ok ||
-      updateData.status === RES_CODE.ok
-    ) {
-      messageApi.success(t('SubsMakerPage.SavedSuccess'))
+    if (createData.status === RES_CODE.ok) {
+      messageApi.success(t('Message.Saved'))
+    }
+    if (updateData.status === RES_CODE.ok) {
+      messageApi.success(t('Message.Updated'))
     }
     if (
       createData.status === RES_CODE.error ||
       updateData.status === RES_CODE.error
     ) {
-      messageApi.error(t('SubsMakerPage.SavedError'))
+      messageApi.error(t('Message.Error'))
     }
   }, [createData.status, updateData.status, messageApi, t])
 
@@ -62,6 +63,7 @@ const SaveBtn: React.FC<ISaveBtnProps> = ({
     setChanged(false)
     if (isItNew && params.id) {
       await createData.foo(API_COLLECTION.subscriptions, params.id, subsState)
+      setItNew(false)
       return
     }
     if (params.id) {

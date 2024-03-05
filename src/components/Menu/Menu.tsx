@@ -11,7 +11,7 @@ import Logo from './components/Logo'
 import RightSideBtns from './components/RightSideBtns'
 
 import './MenuStyles.scss'
-import { IMenuItem } from './MenuTypes'
+import { MENU_ITEMS } from './MenuConstants'
 
 const Menu: React.FC = () => {
   const { t } = useTranslation()
@@ -26,37 +26,6 @@ const Menu: React.FC = () => {
       setCurrentPath(location.pathname.replace(/\/[^/]*$/, ''))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  const menuItems: IMenuItem[] = [
-    {
-      label: t('Menu.Dashboard'),
-      key: PATH.dashboard,
-    },
-    {
-      label: t('Menu.Clients'),
-      key: PATH.clients,
-    },
-    {
-      label: t('Menu.Billing'),
-      key: PATH.billing,
-    },
-    {
-      label: t('Menu.SubsMaker'),
-      key: PATH.subsMaker,
-    },
-    {
-      label: t('Menu.Services'),
-      key: PATH.services,
-    },
-    {
-      label: t('Menu.Messages'),
-      key: PATH.messages,
-    },
-    {
-      label: t('Menu.Admins'),
-      key: PATH.admins,
-    },
-  ]
 
   const handleControlMenu = () => {
     setMenuOpen(!isMenuOpen)
@@ -81,7 +50,10 @@ const Menu: React.FC = () => {
           className="Menu-body-rightSide-drawer"
         >
           <AntdMenu
-            items={menuItems}
+            items={MENU_ITEMS.map((menuItem) => ({
+              ...menuItem,
+              label: t(menuItem.label),
+            }))}
             className="Menu-body-rightSide-drawer-menu"
             selectedKeys={
               location.pathname === PATH.profile ? undefined : [currentPath]

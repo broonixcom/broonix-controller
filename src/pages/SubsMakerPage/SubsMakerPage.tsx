@@ -13,13 +13,11 @@ import { PATH } from '@components/Router/RouterConstants'
 import Navigation from './components/Navigation'
 import SaveBtn from './components/SaveBtn'
 import QtySelector from './components/QtySelector'
-import LangSupport from './components/LangSupport'
 import CreationModal from './components/CreationModal'
 import LangTabs from './components/LangTabs'
 import QtyVisualSelector from './components/QtyVisualSelector'
 import List from './components/List'
 
-import './SubsMakerPageStyles.scss'
 import { ISubsState } from './SubsMakerPageTypes'
 import { INITIAL_STATE, SUB_TYPE } from './SubsMakerPageConstants'
 
@@ -56,8 +54,13 @@ const SubsMakerPage: React.FC = () => {
   }, [params.id])
 
   useEffect(() => {
-    readData.data ? setSubsState(readData.data as ISubsState) : setItNew(true)
+    readData.data && setSubsState(readData.data as ISubsState)
   }, [readData.data])
+
+  useEffect(() => {
+    readData.data ? setItNew(false) : setItNew(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [readData.isLoading])
 
   useEffect(() => {
     for (const { subInfo, pricesPerQty } of subsState.subs) {
@@ -96,15 +99,13 @@ const SubsMakerPage: React.FC = () => {
             isChanged,
             setChanged,
             setCurrentQtyState,
+            setItNew,
           }}
         />
         <Loader isLoading={readData.isLoading} />
-        <SaveBtn {...{ isChanged, setChanged, subsState, isItNew }} />
+        <SaveBtn {...{ isChanged, setChanged, subsState, isItNew, setItNew }} />
         <Divider />
         <div className="SubsMakerPage-body-flexContainer">
-          <LangSupport
-            {...{ subsState, setSubsState, setChanged, setCurrentLangState }}
-          />
           <QtySelector {...{ subsState, setSubsState, setChanged }} />
         </div>
         <CreationModal

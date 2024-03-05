@@ -12,4 +12,5 @@ export interface ISub {
   pricePerMonth?: number
   pricesPerQty?: { [key: string]: number }
   base?: boolean
+  focus?: boolean
 }

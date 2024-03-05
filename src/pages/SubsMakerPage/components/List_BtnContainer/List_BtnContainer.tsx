@@ -8,6 +8,7 @@ import {
   IconEdit,
   IconTrash,
   IconArrowBigRight,
+  IconFocus2,
 } from '@tabler/icons-react'
 
 import { MOVE_SUB } from '../List/ListConstants'
@@ -35,6 +36,14 @@ const List_BtnContainer: React.FC<IList_BtnContainerProps> = ({
   const handleSelectBaseSub = (index: number) => {
     subs.forEach((sub, i) =>
       i === index ? (sub.base = true) : (sub.base = false),
+    )
+    setSubsState({ ...subsState, subs })
+    setChanged(true)
+  }
+
+  const handleMakeSubFocused = (index: number) => {
+    subs.forEach((sub, i) =>
+      i === index ? (sub.focus = true) : (sub.focus = false),
     )
     setSubsState({ ...subsState, subs })
     setChanged(true)
@@ -94,6 +103,15 @@ const List_BtnContainer: React.FC<IList_BtnContainerProps> = ({
           icon={<IconUfo stroke="1" />}
           name={`${i}`}
           onClick={() => handleSelectBaseSub(i)}
+        />
+      </Tooltip>
+      <Tooltip
+        placement="bottom"
+        title={t('SubsMakerPage.TooltipMakeSubFocused')}
+      >
+        <Button
+          icon={<IconFocus2 stroke="1" />}
+          onClick={() => handleMakeSubFocused(i)}
         />
       </Tooltip>
       <Button icon={<IconEdit stroke="1" />} onClick={handleEditSub} />

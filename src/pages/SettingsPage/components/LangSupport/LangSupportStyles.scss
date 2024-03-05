@@ -56,4 +56,11 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  &-deleteModal {
+    // ANT DESIGN HACKY CODE
+    .ant-modal-title {
+      margin-right: 30px;
+    }
+  }
 }

@@ -7,6 +7,7 @@ export const PATH = {
   services: '/services',
   messages: '/messages',
   admins: '/admins',
+  settings: '/settings',
   profile: '/profile',
 }
 

@@ -24,7 +24,7 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
     return
   }
 
-  const options = Array.from({ length: 150 }, (_, index) => ({
+  const options = Array.from({ length: 500 }, (_, index) => ({
     value: index + 1,
     label: `${index + 1}`,
   }))

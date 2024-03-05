@@ -5,19 +5,30 @@ import { PATH, PARAM } from './RouterConstants'
 import { IRoute } from './RouterTypes'
 
 const AuthPage = lazy(() => import('@pages/AuthPage'))
+const ErrorPage = lazy(() => import('@pages/ErrorPage'))
+const ProfilePage = lazy(() => import('@pages/ProfilePage'))
+
 const DashboardPage = lazy(() => import('@pages/DashboardPage'))
 const ClientsPage = lazy(() => import('@pages/ClientsPage'))
+const MessagesPage = lazy(() => import('@pages/MessagesPage'))
 const BillingPage = lazy(() => import('@pages/BillingPage'))
 const SubsMakerPage = lazy(() => import('@pages/SubsMakerPage'))
 const ServicesPage = lazy(() => import('@pages/ServicesPage'))
-const MessagesPage = lazy(() => import('@pages/MessagesPage'))
+const SettingsPage = lazy(() => import('@pages/SettingsPage'))
 const AdminsPage = lazy(() => import('@pages/AdminsPage'))
-const ProfilePage = lazy(() => import('@pages/ProfilePage'))
 
 const ROUTER: IRoute[] = [
   {
     path: PATH.auth,
     page: AuthPage,
+  },
+  {
+    path: '*',
+    page: ErrorPage,
+  },
+  {
+    path: PATH.profile,
+    page: ProfilePage,
   },
   {
     path: PATH.dashboard,
@@ -26,6 +37,10 @@ const ROUTER: IRoute[] = [
   {
     path: PATH.clients,
     page: ClientsPage,
+  },
+  {
+    path: PATH.messages,
+    page: MessagesPage,
   },
   {
     path: PATH.billing,
@@ -41,16 +56,12 @@ const ROUTER: IRoute[] = [
     page: ServicesPage,
   },
   {
-    path: PATH.messages,
-    page: MessagesPage,
+    path: PATH.settings,
+    page: SettingsPage,
   },
   {
     path: PATH.admins,
     page: AdminsPage,
-  },
-  {
-    path: PATH.profile,
-    page: ProfilePage,
   },
 ]
 

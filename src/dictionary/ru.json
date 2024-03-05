@@ -11,6 +11,11 @@
     "Yes": "Да",
     "No": "Нет"
   },
+  "Message": {
+    "Saved": "Сохранено",
+    "Updated": "Обновлено",
+    "Error": "Ошибка!"
+  },
   "Prepositions": {
     "Before": "До"
   },
@@ -19,11 +24,25 @@
     "Dashboard": "Дашборд",
     "Clients": "Клиенты",
     "Billing": "Биллинг",
-    "SubsMaker": "Конструктор подписок",
-    "Services": "Сервисы",
     "Messages": "Сообщения",
+    "SubsMaker": "Конструктор",
+    "Services": "Сервисы",
+    "Settings": "Настройки",
     "Admins": "Админы",
     "Profile": "Мой профиль"
+  },
+  "ErrorPage": {
+    "ErrorTextFact": "Что то пошло не так и сломалось",
+    "ErrorTextTip": "Попробуйте перейти на другую страницу или обновить текущую страницу"
+  },
+  "SettingsPage": {
+    "LangSupportSubTitle": "Поддерживаемые языки",
+    "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
+    "AddLangErrorLatin": "Разрешено писать только латиницей",
+    "AddLangErrorSame": "Такой язык уже добавлен",
+    "AddLang": "Добавление языка",
+    "AddLangPlaceholder": "Впишите код языка, например RU",
+    "DeleteLangModalTitle": "Удаление языка может повлечь за собой ошибки! Все равно удалить?"
   },
   "SubsMakerPage": {
     "ServiceNav": "Сервис",
@@ -39,12 +58,6 @@
     "Subscritions": "Подписки",
     "QtyError": "Нельзя удалить элемент, если он единственный",
     "NoLimits": "Без ограничений",
-    "LangSupport": "Поддерживаемые языки",
-    "AddLang": "Добавление языка",
-    "AddLangPlaceholder": "Впишите код языка, например RU",
-    "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
-    "AddLangErrorLatin": "Разрешено писать только латиницей",
-    "AddLangErrorSame": "Такой язык уже добавлен",
     "CreateSubModalTitle": "Формирование подписки",
     "EditSubModalTitle": "Редактирование подписки",
     "SubcriptionName": "Название подписки",
@@ -58,10 +71,9 @@
     "PerMonth": "/ в месяц",
     "DeleteModalQuestion": "Удалить подписку?",
     "TooltipMakeSubBase": "Сделать подписку базовой",
-    "SavedSuccess": "Сохранено",
+    "TooltipMakeSubFocused": "Выделить подписку",
     "SavedNotEnoughInfo": "Не все поля заполнены",
     "SavedWarningNoSubs": "Нет подписок",
-    "SavedError": "Не сохранено, что-то пошло не так",
     "BlockerTitle": "Вы не сохранили данные, точно продолжить?"
   }
 }
