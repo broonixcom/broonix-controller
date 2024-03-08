@@ -1,0 +1,23 @@
+@import '@lib/screens.scss';
+
+.LangSupport_AddLang-body {
+  margin-bottom: 10px;
+
+  &-addBtn {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 150px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-modalInput {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

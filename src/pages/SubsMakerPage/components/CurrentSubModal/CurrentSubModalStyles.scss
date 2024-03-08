@@ -1,0 +1,36 @@
+@import '@lib/screens.scss';
+
+.CurrentSubModal-body {
+  p {
+    font-family: Montserrat-SemiBold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-addBtn {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 150px;
+
+    @include mobileScreen {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-modal {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: auto;
+    height: 450px;
+  }
+}

@@ -1,26 +1,25 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
+import { useAtom } from 'jotai'
 
-import { Select, message } from 'antd'
+import { Select, message, Divider } from 'antd'
 
-import { SUB_TYPE } from '../../SubsMakerPageConstants'
+import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
+import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 
 import './QtySelectorStyles.scss'
-import { IQtySelectorProps } from './QtySelectorTypes'
 
-const QtySelector: React.FC<IQtySelectorProps> = ({
-  subsState,
-  setSubsState,
-  setChanged,
-}) => {
+const QtySelector: React.FC = () => {
   const { t } = useTranslation()
-  const params = useParams()
+  const { id } = useParams()
   const [messageApi, contextHolder] = message.useMessage()
 
-  const { qty, subs } = subsState
+  const [subs, setSubs] = useAtom(subsAtom)
 
-  if (params.id === SUB_TYPE.place) {
+  if (!id) return
+
+  if (id === SUB_TYPE.place) {
     return
   }
 
@@ -41,21 +40,17 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
       else return -1
     }
 
-    const newSubs = subs.map((sub) => ({
-      ...sub,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      pricesPerQty: value.sort(sortFoo).reduce((obj: any, i) => {
-        obj[i] = sub.pricesPerQty && sub.pricesPerQty[i]
-        return obj
-      }, {}),
-    }))
-
-    setSubsState({ ...subsState, qty: value.sort(sortFoo), subs: newSubs })
-    setChanged(true)
+    setSubs({
+      ...subs,
+      [id]: {
+        ...subs[id],
+        qty: value.sort(sortFoo),
+      },
+    })
   }
 
   const titleSelector = () => {
-    switch (params.id) {
+    switch (id) {
       case SUB_TYPE.service:
         return t('SubsMakerPage.EmpCount')
       case SUB_TYPE.rental:
@@ -69,13 +64,14 @@ const QtySelector: React.FC<IQtySelectorProps> = ({
 
   return (
     <div className="QtySelector-body">
+      <Divider />
       {contextHolder}
       <p>{titleSelector()}</p>
       <Select
         className="QtySelector-body-counter"
         mode="multiple"
         options={options}
-        value={qty}
+        value={subs[id].qty || null}
         onChange={handleSelectQty}
         placeholder={t('SubsMakerPage.EmpCountPlaceholder')}
       />

@@ -1,3 +1,3 @@
 export interface ILoaderProps {
-  isLoading: boolean
+  isLoading?: boolean
 }

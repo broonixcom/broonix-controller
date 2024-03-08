@@ -1,0 +1,32 @@
+@import '@lib/screens.scss';
+
+.LangSupport_List-body {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-right: 10px;
+  margin-left: 10px;
+
+  @include mobileScreen {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  &-deleteBtn {
+    &:hover {
+      color: red !important;
+    }
+  }
+
+  &-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+  &-deleteModal {
+    // ANT DESIGN HACKY CODE
+    .ant-modal-title {
+      margin-right: 30px;
+    }
+  }
+}

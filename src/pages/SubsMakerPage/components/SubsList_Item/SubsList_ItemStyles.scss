@@ -1,0 +1,53 @@
+@import '@lib/screens.scss';
+@import '@lib/colors.scss';
+
+.SubsList_Item-body {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px;
+  font-family: Montserrat-SemiBold;
+  margin: 10px;
+  transition: 0.2s;
+  border-width: 5px;
+  width: 300px;
+
+  @include mobileScreen {
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  &-name {
+    font-size: 20px;
+  }
+
+  &-perMonth {
+    font-size: 40px;
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  &-totalNoDiscount {
+    text-decoration: line-through;
+    color: #a1a1a1;
+    height: 20px;
+  }
+
+  &-subFocused {
+    background-color: $primary-color;
+    color: #ffffff;
+    border-color: $primary-color;
+  }
+
+  &-subAlarm {
+    animation: to-red 1s ease infinite;
+
+    @keyframes #{to-red} {
+      50% {
+        border-color: red;
+      }
+    }
+  }
+}

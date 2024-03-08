@@ -28,10 +28,6 @@ export const MENU_ITEMS: IMenuItem[] = [
     key: PATH.services,
   },
   {
-    label: 'Menu.Settings',
-    key: PATH.settings,
-  },
-  {
     label: 'Menu.Admins',
     key: PATH.admins,
   },

@@ -14,7 +14,9 @@
   "Message": {
     "Saved": "Сохранено",
     "Updated": "Обновлено",
-    "Error": "Ошибка!"
+    "Deleted": "Удалено",
+    "Error": "Ошибка!",
+    "Loading": "Загрузка..."
   },
   "Prepositions": {
     "Before": "До"
@@ -35,21 +37,19 @@
     "ErrorTextFact": "Что то пошло не так и сломалось",
     "ErrorTextTip": "Попробуйте перейти на другую страницу или обновить текущую страницу"
   },
-  "SettingsPage": {
-    "LangSupportSubTitle": "Поддерживаемые языки",
-    "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
-    "AddLangErrorLatin": "Разрешено писать только латиницей",
-    "AddLangErrorSame": "Такой язык уже добавлен",
-    "AddLang": "Добавление языка",
-    "AddLangPlaceholder": "Впишите код языка, например RU",
-    "DeleteLangModalTitle": "Удаление языка может повлечь за собой ошибки! Все равно удалить?"
-  },
   "SubsMakerPage": {
     "ServiceNav": "Сервис",
     "RentalNav": "Прокат",
     "PlaceNav": "Помещение",
     "HotelNav": "Отель",
     "CinemaNav": "Кинотеатр",
+    "LangSupportSubTitle": "Поддерживаемые языки",
+    "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
+    "AddLangErrorLatin": "Разрешено писать только латиницей",
+    "AddLangErrorSame": "Такой язык уже добавлен",
+    "AddLang": "Добавление языка",
+    "AddLangPlaceholder": "Впишите код языка, например RU",
+    "DeleteLangModalTitle": "Удаление языка может повлечь за собой ошибки! Все равно удалить?",
     "EmpCount": "Варианты количества сотрудников",
     "StuffCount": "Варианты количества товаров",
     "RoomsCount": "Варианты количества номеров",
@@ -58,7 +58,7 @@
     "Subscritions": "Подписки",
     "QtyError": "Нельзя удалить элемент, если он единственный",
     "NoLimits": "Без ограничений",
-    "CreateSubModalTitle": "Формирование подписки",
+    "CreateSubModalTitle": "Создание подписки",
     "EditSubModalTitle": "Редактирование подписки",
     "SubcriptionName": "Название подписки",
     "SubcriptionDescription": "Короткое описание",
@@ -69,7 +69,7 @@
     "AddNewSubError": "Все поля должны быть заполнены",
     "VisualSelectorPlaceholder": "Выбрать",
     "PerMonth": "/ в месяц",
-    "DeleteModalQuestion": "Удалить подписку?",
+    "DeleteSubQuestion": "Вы уверены, что хотите удалить эту подписку?",
     "TooltipMakeSubBase": "Сделать подписку базовой",
     "TooltipMakeSubFocused": "Выделить подписку",
     "SavedNotEnoughInfo": "Не все поля заполнены",

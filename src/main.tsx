@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ConfigProvider } from 'antd'
 
@@ -10,11 +10,9 @@ import Router from '@components/Router'
 import './styles.scss'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ConfigProvider theme={theme}>
-      <Suspense fallback={<Loader isLoading={true} />}>
-        <Router />
-      </Suspense>
-    </ConfigProvider>
-  </React.StrictMode>,
+  <ConfigProvider theme={theme}>
+    <React.Suspense fallback={<Loader isLoading={true} />}>
+      <Router />
+    </React.Suspense>
+  </ConfigProvider>,
 )

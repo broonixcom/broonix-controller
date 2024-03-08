@@ -1,0 +1,26 @@
+@import '@lib/screens.scss';
+
+.SubsList_QtySelector-body {
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  @include mobileScreen {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  &-radio {
+    @include mobileScreen {
+      display: none;
+    }
+  }
+
+  &-selector {
+    width: 100%;
+
+    @include desktopScreen {
+      display: none;
+    }
+  }
+}

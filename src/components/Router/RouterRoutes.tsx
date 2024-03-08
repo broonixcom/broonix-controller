@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { lazy } from 'react'
 
 import { PATH, PARAM } from './RouterConstants'
@@ -14,7 +13,6 @@ const MessagesPage = lazy(() => import('@pages/MessagesPage'))
 const BillingPage = lazy(() => import('@pages/BillingPage'))
 const SubsMakerPage = lazy(() => import('@pages/SubsMakerPage'))
 const ServicesPage = lazy(() => import('@pages/ServicesPage'))
-const SettingsPage = lazy(() => import('@pages/SettingsPage'))
 const AdminsPage = lazy(() => import('@pages/AdminsPage'))
 
 const ROUTER: IRoute[] = [
@@ -54,10 +52,6 @@ const ROUTER: IRoute[] = [
   {
     path: PATH.services,
     page: ServicesPage,
-  },
-  {
-    path: PATH.settings,
-    page: SettingsPage,
   },
   {
     path: PATH.admins,

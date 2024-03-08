@@ -11,33 +11,18 @@ import {
   IconMovie,
 } from '@tabler/icons-react'
 
+import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 import { PATH } from '@components/Router/RouterConstants'
 
-import { SUB_TYPE, INITIAL_STATE } from '../../SubsMakerPageConstants'
-
 import './NavigationStyles.scss'
-import { INavigationProps } from './NavigationTypes'
 
-const Navigation: React.FC<INavigationProps> = ({
-  isChanged,
-  setSubsState,
-  setChanged,
-  setCurrentQtyState,
-  setItNew,
-}) => {
+const Navigation: React.FC = () => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const params = useParams()
 
   const handleClickToMenu: MenuProps['onClick'] = (e) => {
     navigate(PATH.subsMaker + '/' + e.key)
-
-    if (!isChanged) {
-      setChanged(false)
-      setItNew(false)
-      setCurrentQtyState(null)
-      setSubsState(INITIAL_STATE)
-    }
   }
 
   const navItems = [
