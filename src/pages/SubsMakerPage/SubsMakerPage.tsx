@@ -13,7 +13,7 @@ import LangSupport from './components/LangSupport'
 import Navigation from './components/Navigation'
 import SaveBtn from './components/SaveBtn'
 import QtySelector from './components/QtySelector'
-import CurrentSubModal from './components/CurrentSubModal'
+import CurrentSub from './components/CurrentSub'
 import SubsList from './components/SubsList'
 
 const SubsMakerPage: React.FC = () => {
@@ -36,10 +36,6 @@ const SubsMakerPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  useEffect(() => {
-    id && console.warn(subs[id])
-  }, [subs])
-
   // const fooBlockerModal = () => {
   //   setChanged(false)
   //   setCurrentQtyState(null)
@@ -56,7 +52,7 @@ const SubsMakerPage: React.FC = () => {
         <SaveBtn />
         {/* check save btn */}
         <QtySelector />
-        <CurrentSubModal />
+        <CurrentSub />
         <SubsList />
       </div>
     </Layout>

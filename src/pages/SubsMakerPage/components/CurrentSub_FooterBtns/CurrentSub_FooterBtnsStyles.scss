@@ -1,0 +1,10 @@
+.CurrentSub_FooterBtns-body {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 20px;
+
+  &-cancelBtn {
+    margin-right: 10px;
+  }
+}

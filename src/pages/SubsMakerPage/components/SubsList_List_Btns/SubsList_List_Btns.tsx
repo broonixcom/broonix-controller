@@ -67,6 +67,7 @@ const SubsList_List_Btns: React.FC<ISubsList_List_BtnsProps> = ({
     setCurentSub({
       isModalOpen: true,
       sub: sub,
+      index,
     })
   }
 

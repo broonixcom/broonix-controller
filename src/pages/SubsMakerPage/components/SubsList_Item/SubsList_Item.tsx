@@ -32,40 +32,20 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
   const [isAlarm, setAlarm] = useState(false)
 
   useEffect(() => {
-    // let emptyQtyInSub
+    const subLangKeys = sub.subInfo ? Object.keys(sub.subInfo) : []
+    const checkLang = langSupport.every((lang) => subLangKeys.includes(lang))
+    const checkLangCount = langSupport.length === subLangKeys.length
 
-    // id && subs[id].qty?.forEach(qty => {
-    //   sub.pricesPerQty && Object.keys(sub.pricesPerQty).find(key => Number(key) === qty ? emptyQtyInSub = true : emptyQtyInSub = false)
-    // })
+    const subQtyKeys = sub.pricesPerQty
+      ? Object.keys(sub.pricesPerQty).map(Number)
+      : []
+    const checkQty =
+      id && subs[id].qty?.every((qty) => subQtyKeys.includes(qty))
+    const checkQtyCount = id && subs[id].qty?.length === subQtyKeys.length
 
-    if (sub.pricesPerQty && id) {
-      const arr1 = subs[id].qty
-      const arr2 = Object.keys(sub.pricesPerQty).map(key => Number(key))
-
-      console.log('arr1', arr1)
-      console.log('arr2', arr2)
-
-      setAlarm(!arr1?.every((val, i) => val === arr2[i]))
-
-    }
-
-    // const  = sub.pricesPerQty
-    //   && id
-    //   && Object.keys(sub.pricesPerQty).map(num => Number(num))
-
-    // const emptyQtyInSub2 = id && subs[id].qty
-
-
-    // console.log(emptyQtyInSub1, emptyQtyInSub2)
-
-    // const emptylangInSub =
-    //   sub.subInfo &&
-    //   Object.values(sub.subInfo).some(
-    //     (val) => !val.subDescTxt || !val.subNameTxt || !val.subTotalTxt,
-    //   )
-
-    // emptyQtyInSub ? setAlarm(true) : setAlarm(false)
-
+    checkLang && checkLangCount && checkQty && checkQtyCount
+      ? setAlarm(false)
+      : setAlarm(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subs, langSupport])
 

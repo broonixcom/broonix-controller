@@ -11,6 +11,11 @@
   border-width: 5px;
   width: 300px;
 
+  // ANT DESIGN HACKY CODE
+  .ant-card-body {
+    width: 100%;
+  }
+
   @include mobileScreen {
     margin-right: 0;
     margin-left: 0;
@@ -31,7 +36,7 @@
 
   &-totalNoDiscount {
     text-decoration: line-through;
-    color: #a1a1a1;
+    color: $grey;
     height: 20px;
   }
 
@@ -46,7 +51,7 @@
 
     @keyframes #{to-red} {
       50% {
-        border-color: red;
+        border-color: $secondary-color;
       }
     }
   }

@@ -1,3 +1,5 @@
+@import '@lib/colors.scss';
+
 .SubsList_List_Btns-body {
   display: flex;
   align-items: center;
@@ -13,8 +15,8 @@
 
   &-trashBtn {
     &:hover {
-      color: red !important;
-      border-color: red !important;
+      color: $secondary-color !important;
+      border-color: $secondary-color !important;
     }
   }
 }

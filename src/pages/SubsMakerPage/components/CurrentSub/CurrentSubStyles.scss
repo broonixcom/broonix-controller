@@ -1,6 +1,6 @@
 @import '@lib/screens.scss';
 
-.CurrentSubModal-body {
+.CurrentSub-body {
   p {
     font-family: Montserrat-SemiBold;
     margin-right: 10px;
@@ -27,10 +27,22 @@
     }
   }
 
-  &-modal {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    overflow: auto;
-    height: 450px;
+  &-drawer {
+    &-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+
+      &-inputs {
+        height: 93%;
+        overflow: auto;
+      }
+    }
+
+    // ANT DESIGN HACKY CODE
+    .ant-drawer-close {
+      display: none;
+    }
   }
 }

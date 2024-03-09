@@ -9,6 +9,7 @@ export const SUB_TYPE = {
 }
 
 export const SUB_FIELD = {
+  subInfo: 'subInfo',
   subNameTxt: 'subNameTxt',
   subDescTxt: 'subDescTxt',
   subTotalTxt: 'subTotalTxt',
