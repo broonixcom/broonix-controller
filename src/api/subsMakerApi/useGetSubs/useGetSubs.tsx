@@ -23,7 +23,7 @@ const useGetSubs = () => {
       setSubs({
         ...subs,
         [id]: subsData,
-        original: subsData
+        original: subsData,
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subsData])

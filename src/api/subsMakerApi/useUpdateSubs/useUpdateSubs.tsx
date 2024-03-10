@@ -15,8 +15,10 @@ const useUpdateLang = () => {
   const updateData = useUpdateData()
 
   useEffect(() => {
-    id && updateData.status === RES_CODE.ok && setSubs({ ...subs, original: subs[id] })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    id &&
+      updateData.status === RES_CODE.ok &&
+      setSubs({ ...subs, original: subs[id] })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updateData.status])
 
   const updateSubsIsLoading = updateData.isLoading
