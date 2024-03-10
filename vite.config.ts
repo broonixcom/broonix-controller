@@ -16,7 +16,6 @@ export default defineConfig({
       '@hooks': '/src/hooks',
       '@lib': '/src/lib',
       '@pages': '/src/pages',
-      '@context': '/src/context',
       '@src': '/src',
     },
   },

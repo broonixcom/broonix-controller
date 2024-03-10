@@ -25,10 +25,7 @@ const SubsList: React.FC = () => {
   }, [langSupport])
 
   if (!id) return
-
-  if (id && !subs[id].subs.length) {
-    return
-  }
+  if (!subs[id].subs?.length) return
 
   return (
     <div className="SubsList-body">

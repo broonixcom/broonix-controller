@@ -1,4 +1,4 @@
 export interface IBlockerModalProps {
   verify: boolean
-  foo?: () => void
+  okFoo?: () => void
 }

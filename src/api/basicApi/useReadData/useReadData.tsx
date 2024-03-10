@@ -17,12 +17,7 @@ const useReadData = () => {
 
     try {
       const dataSnap = await getDoc(doc(firebaseDB, collection, dataID))
-      if (dataSnap.exists()) {
-        setData(dataSnap.data())
-        return dataSnap.data()
-      } else {
-        throw Error
-      }
+      dataSnap.exists() && setData(dataSnap.data())
     } catch (error: any) {
       setStatus(false)
       console.log(error.message)

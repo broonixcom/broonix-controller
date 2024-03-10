@@ -10,4 +10,9 @@ export const RES_CODE = {
 
 export const DEFAULT_DOC = {
   lang: 'lang',
+  service: 'service',
+  rental: 'rental',
+  place: 'place',
+  hotel: 'hotel',
+  cinema: 'cinema',
 }

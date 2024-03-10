@@ -2,55 +2,46 @@ import React, { useEffect, useState } from 'react'
 import { useBlocker } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
-import { Modal } from 'antd'
+import ModalX from '@components/ModalX'
 
 import { IBlockerModalProps } from './BlockerModalTypes'
 
-const BlockerModal: React.FC<IBlockerModalProps> = ({ verify, foo }) => {
+const BlockerModal: React.FC<IBlockerModalProps> = ({ verify, okFoo }) => {
   const { t } = useTranslation()
 
   const [isModalOpened, setModalOpened] = useState(false)
-  const [isModalRendered, setModalRendered] = useState(false)
 
   const blocker = useBlocker(
-    (path) => path.currentLocation !== path.nextLocation && verify,
+    (path) => path.currentLocation !== path.nextLocation && !verify,
   )
 
   useEffect(() => {
     if (blocker.state === 'blocked') {
-      setModalRendered(true)
       setModalOpened(true)
     }
   }, [blocker.state])
 
-  if (!isModalRendered) {
-    return
-  }
+  if (!blocker.proceed || !blocker.reset) return
 
   const handleOk = () => {
-    blocker.proceed && blocker.proceed()
+    blocker.proceed()
     setModalOpened(false)
-    foo && foo()
+    okFoo && okFoo()
   }
 
   const handleCancel = () => {
-    blocker.reset && blocker.reset()
+    blocker.reset()
     setModalOpened(false)
   }
 
-  const handleAfterClose = () => {
-    setModalRendered(false)
-  }
-
   return (
-    <Modal
+    <ModalX
       open={isModalOpened}
       title={t('SubsMakerPage.BlockerTitle')}
       okText={t('Button.Yes')}
       onOk={handleOk}
       cancelText={t('Button.No')}
       onCancel={handleCancel}
-      afterClose={handleAfterClose}
     />
   )
 }

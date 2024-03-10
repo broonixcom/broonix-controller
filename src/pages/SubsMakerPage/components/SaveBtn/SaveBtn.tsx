@@ -1,66 +1,51 @@
 import React, { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
+import { useAtom } from 'jotai'
 
 import { Button, message } from 'antd'
 import { IconDeviceFloppy } from '@tabler/icons-react'
 
-import useCreateData from '@api/basicApi/useCreateData'
-import useUpdateData from '@api/basicApi/useUpdateData'
-import { API_COLLECTION, RES_CODE } from '@api/apiConstants'
+import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
 
-import { SUB_TYPE } from '../../SubsMakerPageConstants'
+import useUpdateSubs from '@api/subsMakerApi/useUpdateSubs'
+import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
+import isEqual from '@helpers/isEqual'
+import { RES_CODE } from '@api/apiConstants'
 
 import './SaveBtnStyles.scss'
 
 const SaveBtn: React.FC = () => {
   const { t } = useTranslation()
-  const params = useParams()
   const [messageApi, contextHolder] = message.useMessage()
+  const { id } = useParams()
 
-  const createData = useCreateData()
-  const updateData = useUpdateData()
+  const [subs] = useAtom(subsAtom)
+  const [isAlarm] = useAtom(alarmAtom)
+
+  const { updateSubs, updateSubsIsLoading, updateSubsStatus } = useUpdateSubs()
 
   useEffect(() => {
-    if (createData.status === RES_CODE.ok) {
-      messageApi.success(t('Message.Saved'))
-    }
-    if (updateData.status === RES_CODE.ok) {
+    if (updateSubsStatus === RES_CODE.ok) {
       messageApi.success(t('Message.Updated'))
     }
-    if (
-      createData.status === RES_CODE.error ||
-      updateData.status === RES_CODE.error
-    ) {
+    if (updateSubsStatus === RES_CODE.error) {
       messageApi.error(t('Message.Error'))
     }
-  }, [createData.status, updateData.status, messageApi, t])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateSubsStatus])
+
+  if (!id) return
 
   const handleSave = async () => {
-    // const langCheck = subsState.subs?.some((sub) =>
-    //   Object.values(sub.subInfo).some(
-    //     ({ subDesc, subName }) => !subDesc || !subName,
-    //   ),
-    // )
-    // const pricesCheck =
-    //   params.id !== SUB_TYPE.place &&
-    //   subsState.subs?.some(
-    //     ({ pricesPerQty }) =>
-    //       pricesPerQty && Object.values(pricesPerQty).some((price) => !price),
-    //   )
-    // if (langCheck || pricesCheck) {
-    //   return messageApi.error(t('SubsMakerPage.SavedNotEnoughInfo'))
-    // }
-    // setChanged(false)
-    // if (isItNew && params.id) {
-    //   await createData.foo(API_COLLECTION.subscriptions, params.id, subsState)
-    //   setItNew(false)
-    //   return
-    // }
-    // if (params.id) {
-    //   await updateData.foo(API_COLLECTION.subscriptions, params.id, subsState)
-    //   return
-    // }
+    if (isEqual(subs[id], subs.original)) {
+      return messageApi.warning(t('SubsMakerPage.WarnNoChanges'))
+    }
+    if (isAlarm) {
+      return messageApi.error(t('SubsMakerPage.ErrorPutSomeChanges'))
+    }
+
+    updateSubs(subs[id])
   }
 
   return (
@@ -70,9 +55,9 @@ const SaveBtn: React.FC = () => {
         className="SaveBtn-body"
         type="primary"
         icon={<IconDeviceFloppy />}
-        // disabled={!isChanged}
+        disabled={updateSubsIsLoading}
         onClick={handleSave}
-        loading={createData.isLoading || updateData.isLoading}
+        loading={updateSubsIsLoading}
       >
         {t('Button.Save')}
       </Button>

@@ -74,6 +74,8 @@
     "TooltipMakeSubFocused": "Выделить подписку",
     "SavedNotEnoughInfo": "Не все поля заполнены",
     "SavedWarningNoSubs": "Нет подписок",
-    "BlockerTitle": "Вы не сохранили данные, точно продолжить?"
+    "BlockerTitle": "Вы не сохранили данные, точно продолжить?",
+    "WarnNoChanges": "Не было внесено никаких изменений",
+    "ErrorPutSomeChanges": "Вначале внесите необходимые изменения в подписки"
   }
 }

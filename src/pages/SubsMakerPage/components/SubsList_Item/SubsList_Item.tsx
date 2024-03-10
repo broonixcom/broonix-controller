@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
@@ -8,6 +8,7 @@ import { Card, Divider } from 'antd'
 
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import langSupportAtom from '@atoms/subsMakerAtoms/langSupportAtom'
+import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
 
 import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 import { ISub } from '@atoms/subsMakerAtoms/subsAtom/subsAtomTypes'
@@ -28,8 +29,7 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
 
   const [subs] = useAtom(subsAtom)
   const [langSupport] = useAtom(langSupportAtom)
-
-  const [isAlarm, setAlarm] = useState(false)
+  const [isAlarm, setAlarm] = useAtom(alarmAtom)
 
   useEffect(() => {
     const subLangKeys = sub.subInfo ? Object.keys(sub.subInfo) : []

@@ -29,7 +29,7 @@ const LangSupport: React.FC = () => {
       <p>{t('SubsMakerPage.LangSupportSubTitle')}</p>
       <LangSupport_AddLang />
       <LangSupport_List />
-      <Divider className='LangSupport-body-divider' />
+      <Divider className="LangSupport-body-divider" />
     </div>
   )
 }

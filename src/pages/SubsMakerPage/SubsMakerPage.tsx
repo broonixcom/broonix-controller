@@ -5,9 +5,10 @@ import { useAtom } from 'jotai'
 import useGetSubs from '@api/subsMakerApi/useGetSubs'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import Layout from '@components/Layout'
-// import BlockerModal from '@components/BlockerModal'
+import BlockerModal from '@components/BlockerModal'
 import { PATH } from '@components/Router/RouterConstants'
 import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
+import isEqual from '@helpers/isEqual'
 
 import LangSupport from './components/LangSupport'
 import Navigation from './components/Navigation'
@@ -23,7 +24,7 @@ const SubsMakerPage: React.FC = () => {
 
   const { getSubs, getSubsIsLoading } = useGetSubs()
 
-  const [subs] = useAtom(subsAtom)
+  const [subs, setSubs] = useAtom(subsAtom)
 
   useEffect(() => {
     if (location.pathname === PATH.subsMaker)
@@ -32,25 +33,20 @@ const SubsMakerPage: React.FC = () => {
   }, [location.pathname])
 
   useEffect(() => {
-    id && !subs[id].subs.length && getSubs()
+    if (id && !subs[id].subs?.length) getSubs()
+    else id && setSubs({ ...subs, original: subs[id] })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  // const fooBlockerModal = () => {
-  //   setChanged(false)
-  //   setCurrentQtyState(null)
-  //   setSubsState(INITIAL_STATE)
-  // }
+  if (!id) return
 
   return (
     <Layout isLoading={getSubsIsLoading}>
-      {/* <BlockerModal verify={isChanged} foo={fooBlockerModal} /> */}
+      <BlockerModal verify={isEqual(subs[id], subs.original)} />
       <div className="SubsMakerPage-body">
         <LangSupport />
         <Navigation />
-        {/* check save btn */}
         <SaveBtn />
-        {/* check save btn */}
         <QtySelector />
         <CurrentSub />
         <SubsList />
