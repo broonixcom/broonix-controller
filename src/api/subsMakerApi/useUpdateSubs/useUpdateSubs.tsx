@@ -2,10 +2,11 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useAtom } from 'jotai'
 
-import useUpdateData from '@api/basicApi/useUpdateData'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
-import { API_COLLECTION, RES_CODE } from '@api/apiConstants'
 import { ISub } from '@atoms/subsMakerAtoms/subsAtom/subsAtomTypes'
+
+import useUpdateData from '@api/basicApi/useUpdateData'
+import { API_COLLECTION, RES_CODE } from '@api/apiConstants'
 
 const useUpdateLang = () => {
   const { id } = useParams()
@@ -21,12 +22,12 @@ const useUpdateLang = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updateData.status])
 
-  const updateSubsIsLoading = updateData.isLoading
-  const updateSubsStatus = updateData.status
-
   const updateSubs = (subs: { qty?: number[]; subs: ISub[] }) => {
     id && updateData.foo(API_COLLECTION.subscriptions, id, subs)
   }
+
+  const updateSubsIsLoading = updateData.isLoading
+  const updateSubsStatus = updateData.status
 
   return { updateSubs, updateSubsIsLoading, updateSubsStatus }
 }

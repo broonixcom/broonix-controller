@@ -2,12 +2,14 @@ import React, { useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useAtom } from 'jotai'
 
-import useGetSubs from '@api/subsMakerApi/useGetSubs'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
+import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
+import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
+
+import useGetSubs from '@api/subsMakerApi/useGetSubs'
 import Layout from '@components/Layout'
 import BlockerModal from '@components/BlockerModal'
 import { PATH } from '@components/Router/RouterConstants'
-import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 import isEqual from '@helpers/isEqual'
 
 import LangSupport from './components/LangSupport'
@@ -25,6 +27,7 @@ const SubsMakerPage: React.FC = () => {
   const { getSubs, getSubsIsLoading } = useGetSubs()
 
   const [subs, setSubs] = useAtom(subsAtom)
+  const [isAlarm] = useAtom(alarmAtom)
 
   useEffect(() => {
     if (location.pathname === PATH.subsMaker)
@@ -38,16 +41,17 @@ const SubsMakerPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  useEffect(() => {
-    // id && console.log('sub', subs[id])
-    console.log('original', subs.original)
-  }, [subs.original])
-
   if (!id) return
+
+  const blockVerify = () => {
+    if (isAlarm) return true
+    if (!isEqual(subs[id], subs.original)) return true
+    return false
+  }
 
   return (
     <Layout isLoading={getSubsIsLoading}>
-      <BlockerModal verify={isEqual(subs[id], subs.original)} />
+      <BlockerModal verify={blockVerify()} />
       <div className="SubsMakerPage-body">
         <LangSupport />
         <Navigation />

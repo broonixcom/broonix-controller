@@ -1,6 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useAtom } from 'jotai'
 
 import { Menu, MenuProps } from 'antd'
 import {
@@ -11,7 +12,9 @@ import {
   IconMovie,
 } from '@tabler/icons-react'
 
+import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
 import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
+
 import { PATH } from '@components/Router/RouterConstants'
 
 import './NavigationStyles.scss'
@@ -21,7 +24,10 @@ const Navigation: React.FC = () => {
   const navigate = useNavigate()
   const params = useParams()
 
+  const [, setAlarm] = useAtom(alarmAtom)
+
   const handleClickToMenu: MenuProps['onClick'] = (e) => {
+    setAlarm(false)
     navigate(PATH.subsMaker + '/' + e.key)
   }
 

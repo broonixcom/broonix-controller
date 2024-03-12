@@ -15,6 +15,7 @@ import {
 
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import currentSubAtom from '@atoms/subsMakerAtoms/currentSubAtom'
+
 import ModalX from '@components/ModalX'
 
 import './SubsList_List_BtnsStyles.scss'

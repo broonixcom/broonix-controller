@@ -7,9 +7,9 @@ import { Button, message } from 'antd'
 import { IconDeviceFloppy } from '@tabler/icons-react'
 
 import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
+import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 
 import useUpdateSubs from '@api/subsMakerApi/useUpdateSubs'
-import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import isEqual from '@helpers/isEqual'
 import { RES_CODE } from '@api/apiConstants'
 
@@ -38,11 +38,11 @@ const SaveBtn: React.FC = () => {
   if (!id) return
 
   const handleSave = async () => {
-    if (isEqual(subs[id], subs.original)) {
-      return messageApi.warning(t('SubsMakerPage.WarnNoChanges'))
-    }
     if (isAlarm) {
       return messageApi.error(t('SubsMakerPage.ErrorPutSomeChanges'))
+    }
+    if (isEqual(subs[id], subs.original)) {
+      return messageApi.warning(t('SubsMakerPage.WarnNoChanges'))
     }
 
     updateSubs(subs[id])

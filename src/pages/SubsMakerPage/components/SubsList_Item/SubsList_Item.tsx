@@ -9,7 +9,6 @@ import { Card, Divider } from 'antd'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import langSupportAtom from '@atoms/subsMakerAtoms/langSupportAtom'
 import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
-
 import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 import { ISub } from '@atoms/subsMakerAtoms/subsAtom/subsAtomTypes'
 
@@ -32,7 +31,7 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
   const [isAlarm, setAlarm] = useAtom(alarmAtom)
 
   useEffect(() => {
-    if(!langSupport?.length) return 
+    if (!langSupport?.length) return
 
     const subLangKeys = sub.subInfo ? Object.keys(sub.subInfo) : []
     const checkLang = langSupport.every((lang) => subLangKeys.includes(lang))
@@ -49,7 +48,7 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
       ? setAlarm(false)
       : setAlarm(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [subs, langSupport])
+  }, [subs, langSupport, id])
 
   if (!id || !selectedLang || !selectedQty) {
     return

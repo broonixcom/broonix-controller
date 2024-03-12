@@ -6,7 +6,6 @@ import { useAtom } from 'jotai'
 import { Input, Form } from 'antd'
 
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
-
 import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 
 import './CurrentSub_QtyStyles.scss'

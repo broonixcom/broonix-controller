@@ -12,15 +12,13 @@ const useUpdateLang = () => {
   const [internalLang, setInternalLang] = useState<string[]>()
 
   const updateData = useUpdateData()
-  const updateLangIsLoading = updateData.isLoading
-  const updateLangStatus = updateData.status
 
   useEffect(() => {
-    if (updateLangStatus === RES_CODE.ok && internalLang) setLangSupport(internalLang)
-    if (updateLangStatus === RES_CODE.error) setInternalLang(undefined)
+    if (updateData.status === RES_CODE.ok && internalLang)
+      setLangSupport(internalLang)
+    if (updateData.status === RES_CODE.error) setInternalLang(undefined)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [updateLangStatus])
-
+  }, [updateData.status])
 
   const updateLang = async (newLang: string[]) => {
     await updateData.foo(API_COLLECTION.settings, DEFAULT_DOC.lang, {
@@ -28,6 +26,9 @@ const useUpdateLang = () => {
     })
     setInternalLang(newLang)
   }
+
+  const updateLangIsLoading = updateData.isLoading
+  const updateLangStatus = updateData.status
 
   return { updateLang, updateLangIsLoading, updateLangStatus }
 }

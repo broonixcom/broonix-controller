@@ -12,7 +12,7 @@ const BlockerModal: React.FC<IBlockerModalProps> = ({ verify, okFoo }) => {
   const [isModalOpened, setModalOpened] = useState(false)
 
   const blocker = useBlocker(
-    (path) => path.currentLocation !== path.nextLocation && !verify,
+    (path) => path.currentLocation !== path.nextLocation && verify,
   )
 
   useEffect(() => {
