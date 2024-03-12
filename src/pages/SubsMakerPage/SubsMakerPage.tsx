@@ -38,6 +38,11 @@ const SubsMakerPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
+  useEffect(() => {
+    // id && console.log('sub', subs[id])
+    console.log('original', subs.original)
+  }, [subs.original])
+
   if (!id) return
 
   return (

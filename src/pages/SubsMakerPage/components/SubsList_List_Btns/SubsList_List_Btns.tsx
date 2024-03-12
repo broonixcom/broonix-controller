@@ -36,27 +36,25 @@ const SubsList_List_Btns: React.FC<ISubsList_List_BtnsProps> = ({
   if (!id) return
 
   const handleMove = (direction: string) => {
+    const updatedSubs = structuredClone(subs[id].subs)
+    const temp = updatedSubs[index]
+
     if (direction === MOVE_SUB.toTheLeft && index !== 0) {
-      const updatedSubs = [...subs[id].subs]
-      const temp = updatedSubs[index]
       updatedSubs[index] = updatedSubs[index - 1]
       updatedSubs[index - 1] = temp
-      setSubs({ ...subs, [id]: { ...subs[id], subs: updatedSubs } })
     }
     if (
       direction === MOVE_SUB.toTheRight &&
       index !== subs[id].subs.length - 1
     ) {
-      const updatedSubs = [...subs[id].subs]
-      const temp = updatedSubs[index]
       updatedSubs[index] = updatedSubs[index + 1]
       updatedSubs[index + 1] = temp
-      setSubs({ ...subs, [id]: { ...subs[id], subs: updatedSubs } })
     }
+    setSubs({ ...subs, [id]: { ...subs[id], subs: updatedSubs } })
   }
 
   const handleSelectBaseSub = () => {
-    const updatedSubs = [...subs[id].subs]
+    const updatedSubs = structuredClone(subs[id].subs)
     updatedSubs.forEach((sub, i) =>
       i === index ? (sub.base = true) : (sub.base = false),
     )
@@ -72,7 +70,7 @@ const SubsList_List_Btns: React.FC<ISubsList_List_BtnsProps> = ({
   }
 
   const handleMakeSubFocused = () => {
-    const updatedSubs = [...subs[id].subs]
+    const updatedSubs = structuredClone(subs[id].subs)
     updatedSubs.forEach((sub, i) =>
       i === index ? (sub.focus = true) : (sub.focus = false),
     )
@@ -80,7 +78,7 @@ const SubsList_List_Btns: React.FC<ISubsList_List_BtnsProps> = ({
   }
 
   const handleDeleteSub = () => {
-    const updatedSubs = [...subs[id].subs]
+    const updatedSubs = structuredClone(subs[id].subs)
     updatedSubs.splice(index, 1)
     setSubs({ ...subs, [id]: { ...subs[id], subs: updatedSubs } })
     setDeleteModalOpen(false)

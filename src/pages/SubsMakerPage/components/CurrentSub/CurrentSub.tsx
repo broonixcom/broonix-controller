@@ -92,7 +92,7 @@ const CurrentSub: React.FC = () => {
         [id]: { ...subs[id], subs: [...subs[id].subs, newSub] },
       })
     } else {
-      const updatedSubs = [...subs[id].subs]
+      const updatedSubs = structuredClone(subs[id].subs)
       updatedSubs.splice(currentSub.index ?? 0, 1, newSub)
 
       setSubs({ ...subs, [id]: { ...subs[id], subs: updatedSubs } })
