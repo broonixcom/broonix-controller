@@ -1,8 +1,11 @@
-const theme = {
+import { ThemeConfig } from "antd"
+
+const theme: ThemeConfig = {
   token: {
-    colorPrimary: '#e9c687',
+    colorPrimary: '#ea8369',
     fontFamily: 'Montserrat-Regular',
   },
+  
 }
 
 export default theme

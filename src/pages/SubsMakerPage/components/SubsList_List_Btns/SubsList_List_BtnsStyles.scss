@@ -12,11 +12,4 @@
     align-items: center;
     justify-content: center;
   }
-
-  &-trashBtn {
-    &:hover {
-      color: $secondary-color !important;
-      border-color: $secondary-color !important;
-    }
-  }
 }
