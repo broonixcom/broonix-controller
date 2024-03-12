@@ -32,6 +32,8 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
   const [isAlarm, setAlarm] = useAtom(alarmAtom)
 
   useEffect(() => {
+    if(!langSupport?.length) return 
+
     const subLangKeys = sub.subInfo ? Object.keys(sub.subInfo) : []
     const checkLang = langSupport.every((lang) => subLangKeys.includes(lang))
     const checkLangCount = langSupport.length === subLangKeys.length

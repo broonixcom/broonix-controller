@@ -20,7 +20,7 @@ const LangSupport: React.FC = () => {
   const { getLang } = useGetLang()
 
   useEffect(() => {
-    !langSupport.length && getLang()
+    !langSupport?.length && getLang()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

@@ -7,6 +7,7 @@ import { IconPlaylistAdd } from '@tabler/icons-react'
 
 import langSupportAtom from '@atoms/subsMakerAtoms/langSupportAtom'
 import useUpdateLang from '@api/subsMakerApi/useUpdateLang'
+import { RES_CODE } from '@api/apiConstants'
 
 import ModalX from '@components/ModalX'
 
@@ -24,7 +25,7 @@ const LangSupport_AddLang: React.FC = () => {
   const [newLangInput, setNewLangInput] = useState('')
 
   useEffect(() => {
-    if (updateLangStatus) {
+    if (updateLangStatus === RES_CODE.ok) {
       setAddNewLangModalOpen(false)
       setNewLangInput('')
       messageApi.success(t('Message.Saved'))

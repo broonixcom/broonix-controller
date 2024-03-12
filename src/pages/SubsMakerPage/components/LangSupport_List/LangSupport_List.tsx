@@ -8,6 +8,7 @@ import { IconTrash } from '@tabler/icons-react'
 import langSupportAtom from '@atoms/subsMakerAtoms/langSupportAtom'
 import ModalX from '@components/ModalX'
 import useUpdateLang from '@api/subsMakerApi/useUpdateLang'
+import { RES_CODE } from '@api/apiConstants'
 
 import './LangSupport_ListStyles.scss'
 
@@ -23,7 +24,7 @@ const LangSupport_List: React.FC = () => {
   const [langForDelete, setLangForDelete] = useState('')
 
   useEffect(() => {
-    if (updateLangStatus) {
+    if (updateLangStatus === RES_CODE.ok) {
       setDeleteModalOpen(false)
       setLangForDelete('')
       messageApi.success(t('Message.Deleted'))

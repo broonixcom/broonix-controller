@@ -22,7 +22,7 @@ const SubsList_LangTabs: React.FC<ISubsList_LangTabsProps> = ({
     <div className="SubsList_LangTabs-body">
       <Tabs
         onChange={handleSelect}
-        items={langSupport.map((lang) => ({ key: lang, label: lang }))}
+        items={langSupport?.map((lang) => ({ key: lang, label: lang }))}
         activeKey={selectedLang}
       />
     </div>

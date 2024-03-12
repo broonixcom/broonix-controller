@@ -10,13 +10,15 @@ const useGetLang = () => {
   const [, setLangSupport] = useAtom(langSupportAtom)
 
   const readData = useReadData()
+
   const langData: string[] = readData.data?.lang
-  const getLangIsLoading = readData.isLoading
 
   useEffect(() => {
-    setLangSupport(langData)
+    langData && setLangSupport(langData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [langData])
+
+  const getLangIsLoading = readData.isLoading
 
   const getLang = async () => {
     readData.foo(API_COLLECTION.settings, DEFAULT_DOC.lang)
