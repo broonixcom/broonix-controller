@@ -69,12 +69,12 @@
     "AddNewSubError": "Все поля должны быть заполнены",
     "VisualSelectorPlaceholder": "Выбрать",
     "PerMonth": "/ в месяц",
-    "DeleteSubQuestion": "Вы уверены, что хотите удалить эту подписку?",
+    "DeleteSubQuestion": "Точно удалить эту подписку?",
     "TooltipMakeSubBase": "Сделать подписку базовой",
     "TooltipMakeSubFocused": "Выделить подписку",
     "SavedNotEnoughInfo": "Не все поля заполнены",
     "SavedWarningNoSubs": "Нет подписок",
-    "BlockerTitle": "Вы не сохранили данные, точно продолжить?",
+    "BlockerTitle": "Есть изменения который не сохранены, точно продолжить?",
     "WarnNoChanges": "Не изменений для сохранения",
     "ErrorPutSomeChanges": "Перед сохранением должны быть внесены изменения в подписки"
   }

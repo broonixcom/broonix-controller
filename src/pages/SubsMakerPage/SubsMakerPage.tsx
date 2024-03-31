@@ -43,15 +43,19 @@ const SubsMakerPage: React.FC = () => {
 
   if (!id) return
 
-  const blockVerify = () => {
+  const verifyAndBlock = () => {
     if (isAlarm) return true
     if (!isEqual(subs[id], subs.original)) return true
     return false
   }
 
+  const yeahDontSaveIt = () => {
+    setSubs({ ...subs, [id]: subs.original })
+  }
+
   return (
     <Layout isLoading={getSubsIsLoading}>
-      <BlockerModal verify={blockVerify()} />
+      <BlockerModal verify={verifyAndBlock()} okFoo={yeahDontSaveIt} />
       <div className="SubsMakerPage-body">
         <LangSupport />
         <Navigation />
