@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useLocation } from 'react-router-dom'
 
-import { Button, Drawer, Menu as AntdMenu, MenuProps } from 'antd'
-import { IconBurger } from '@tabler/icons-react'
+import { Button, Drawer, Menu as AntdMenu, MenuProps, Divider } from 'antd'
+import { IconBurger, IconLogout2 } from '@tabler/icons-react'
 
 import { PATH } from '@components/Router/RouterConstants'
 
@@ -53,6 +53,7 @@ const Menu: React.FC = () => {
             items={MENU_ITEMS.map((menuItem) => ({
               ...menuItem,
               label: t(menuItem.label),
+              icon: <menuItem.icon />,
             }))}
             className="Menu-body-rightSide-drawer-menu"
             selectedKeys={
@@ -60,6 +61,14 @@ const Menu: React.FC = () => {
             }
             onClick={handleClickMenu}
           />
+          <Divider />
+          <Button
+            className="Menu-body-rightSide-exitBtn"
+            type="text"
+            icon={<IconLogout2 />}
+          >
+            {t('Menu.SignOut')}
+          </Button>
         </Drawer>
       </div>
     </div>

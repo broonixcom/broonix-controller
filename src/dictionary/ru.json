@@ -32,7 +32,8 @@
     "Services": "Сервисы",
     "Settings": "Настройки",
     "Admins": "Админы",
-    "Profile": "Мой профиль"
+    "Profile": "Мой профиль",
+    "SignOut": "Выход"
   },
   "ErrorPage": {
     "ErrorTextFact": "Что то пошло не так и сломалось",

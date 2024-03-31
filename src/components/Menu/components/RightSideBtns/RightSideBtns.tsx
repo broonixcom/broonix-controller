@@ -39,17 +39,17 @@ const RightSideBtns: React.FC = () => {
 
   return (
     <div className="RightSideBtns-body">
+      <Dropdown menu={langMenuProps}>
+        <Button className="RightSideBtns-body-dropDown" type="text">
+          <Space>{currentLang}</Space>
+        </Button>
+      </Dropdown>
       <Button
         className="RightSideBtns-body-btn"
         icon={<IconUserCircle />}
         onClick={handleClickProfile}
         type="text"
       />
-      <Dropdown menu={langMenuProps}>
-        <Button className="RightSideBtns-body-btn" type="text">
-          <Space>{currentLang}</Space>
-        </Button>
-      </Dropdown>
     </div>
   )
 }

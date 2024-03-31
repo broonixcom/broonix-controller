@@ -33,6 +33,20 @@
       .ant-drawer-close {
         order: 2;
       }
+
+      .ant-menu-item {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &-exitBtn {
+      font-family: Montserrat-SemiBold;
+      margin-left: 4px;
+      display: flex;
+      align-items: center;
+      height: 40px;
+      width: 100%;
     }
   }
 }

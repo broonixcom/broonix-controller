@@ -4,8 +4,12 @@
   display: flex;
   align-items: center;
 
-  .RightSideBtns-body-btn {
+  .RightSideBtns-body-dropDown {
     box-shadow: none;
     font-family: Montserrat-SemiBold;
+  }
+
+  .RightSideBtns-body-btn {
+    margin-right: 10px;
   }
 }

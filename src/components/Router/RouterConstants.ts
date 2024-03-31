@@ -1,5 +1,7 @@
 export const PATH = {
   auth: '/auth',
+  profile: '/profile',
+
   dashboard: '/dashboard',
   clients: '/clients',
   billing: '/billing',
@@ -7,7 +9,6 @@ export const PATH = {
   services: '/services',
   messages: '/messages',
   admins: '/admins',
-  profile: '/profile',
 }
 
 export const PARAM = {
