@@ -46,6 +46,7 @@
     "HotelNav": "Отель",
     "CinemaNav": "Кинотеатр",
     "LangSupportSubTitle": "Поддерживаемые языки",
+    "AddLangErrorEmptyInput": "Чтобы добавить нужно сначала что то указать в строке",
     "AddLangErrorLetterCount": "Разрешено указывать только две буквы",
     "AddLangErrorLatin": "Разрешено писать только латиницей",
     "AddLangErrorSame": "Такой язык уже добавлен",

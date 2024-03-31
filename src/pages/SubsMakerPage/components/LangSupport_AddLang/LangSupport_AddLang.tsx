@@ -48,6 +48,9 @@ const LangSupport_AddLang: React.FC = () => {
   const handleAddLang = () => {
     const regex = /^[a-zA-Z]*$/
 
+    if (!newLangInput) {
+      return messageApi.error(t('SubsMakerPage.AddLangErrorEmptyInput'))
+    }
     if (newLangInput && !regex.test(newLangInput)) {
       return messageApi.error(t('SubsMakerPage.AddLangErrorLatin'))
     }
