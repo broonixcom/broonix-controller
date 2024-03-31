@@ -1,5 +1,6 @@
 {
-  "LOGO": "BROONIX",
+  "Logo": "BROONIX",
+  "LogoSubTitle": "control",
   "MobileMenu": {
     "Placeholder": "Меню"
   },
