@@ -6,7 +6,6 @@ import { useAtom } from 'jotai'
 import { Input, Form } from 'antd'
 
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
-import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 
 import './CurrentSub_QtyStyles.scss'
 
@@ -17,10 +16,6 @@ const CurrentSub_Qty: React.FC = () => {
   const [subs] = useAtom(subsAtom)
 
   if (!id) return
-
-  if (id === SUB_TYPE.place) {
-    return
-  }
 
   return (
     <div className="CurrentSub_Qty-body">

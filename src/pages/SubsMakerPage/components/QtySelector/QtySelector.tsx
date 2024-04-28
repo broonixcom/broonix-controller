@@ -19,10 +19,6 @@ const QtySelector: React.FC = () => {
 
   if (!id) return
 
-  if (id === SUB_TYPE.place) {
-    return
-  }
-
   const options = Array.from({ length: 500 }, (_, index) => ({
     value: index + 1,
     label: `${index + 1}`,
@@ -57,6 +53,8 @@ const QtySelector: React.FC = () => {
         return t('SubsMakerPage.StuffCount')
       case SUB_TYPE.hotel:
         return t('SubsMakerPage.RoomsCount')
+      case SUB_TYPE.place:
+        return t('SubsMakerPage.PlacesCount')
       default:
         return t('SubsMakerPage.SeatsCount')
     }

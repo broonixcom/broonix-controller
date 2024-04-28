@@ -8,10 +8,7 @@ import { IconPlaylistAdd } from '@tabler/icons-react'
 
 import currentSubAtom from '@atoms/subsMakerAtoms/currentSubAtom'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
-import {
-  SUB_TYPE,
-  SUB_FIELD,
-} from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
+import { SUB_FIELD } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 
 import CurrentSub_SubInfo from '../CurrentSub_SubInfo'
 import CurrentSub_BasePrice from '../CurrentSub_BasePrice'
@@ -38,9 +35,6 @@ const CurrentSub: React.FC = () => {
   if (!id) return
 
   const isAddBtnDisabled = () => {
-    if (id === SUB_TYPE.place) {
-      return false
-    }
     if (!subs[id].qty?.length) {
       return true
     }
@@ -78,7 +72,7 @@ const CurrentSub: React.FC = () => {
         newSub[key] = Number(value[key])
       }
 
-      if (!isNaN(Number(key))) {
+      if (!isNaN(Number(key)) && id) {
         newSub[SUB_FIELD.pricesPerQty] = {
           ...newSub[SUB_FIELD.pricesPerQty],
           [key]: Number(value[key]),
@@ -89,7 +83,10 @@ const CurrentSub: React.FC = () => {
     if (isItNew) {
       setSubs({
         ...subs,
-        [id]: { ...subs[id], subs: [...subs[id].subs, newSub] },
+        [id]: {
+          ...subs[id],
+          subs: subs[id].subs ? [...subs[id].subs, newSub] : [newSub],
+        },
       })
     } else {
       const updatedSubs = structuredClone(subs[id].subs)

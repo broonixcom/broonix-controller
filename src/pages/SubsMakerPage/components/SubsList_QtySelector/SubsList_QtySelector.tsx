@@ -6,7 +6,6 @@ import { useAtom } from 'jotai'
 import { Radio, RadioChangeEvent, Select } from 'antd'
 
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
-import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 
 import './SubsList_QtySelectorStyles.scss'
 import { ISubsList_QtySelectorProps } from './SubsList_QtySelectorTypes'
@@ -26,10 +25,6 @@ const SubsList_QtySelector: React.FC<ISubsList_QtySelectorProps> = ({
   }, [id])
 
   if (!id) {
-    return
-  }
-
-  if (id === SUB_TYPE.place) {
     return
   }
 

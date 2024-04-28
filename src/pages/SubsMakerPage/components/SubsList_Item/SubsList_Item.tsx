@@ -9,7 +9,6 @@ import { Card, Divider } from 'antd'
 import subsAtom from '@atoms/subsMakerAtoms/subsAtom'
 import langSupportAtom from '@atoms/subsMakerAtoms/langSupportAtom'
 import alarmAtom from '@atoms/subsMakerAtoms/alarmAtom'
-import { SUB_TYPE } from '@atoms/subsMakerAtoms/subsAtom/subsAtomConstants'
 import { ISub } from '@atoms/subsMakerAtoms/subsAtom/subsAtomTypes'
 
 import SubsList_List_Btns from '../SubsList_List_Btns'
@@ -55,38 +54,18 @@ const SubsList_Item: React.FC<ISubsList_ItemProps> = ({
   }
 
   const pricePerMonth = (sub: ISub) => {
-    if (id === SUB_TYPE.place) {
-      return `$${sub.pricePerMonth}`
-    } else {
-      return `$${sub.pricesPerQty?.[selectedQty]}`
-    }
+    return `$${sub.pricesPerQty?.[selectedQty]}`
   }
 
   const noDiscountPrice = (subMonths?: number) => {
     const baseSub = subs[id].subs.find((sub) => sub.base)
 
-    if (
-      id === SUB_TYPE.place &&
-      baseSub &&
-      baseSub.pricePerMonth &&
-      subMonths
-    ) {
-      return `$${(subMonths * baseSub.pricePerMonth).toFixed(2)}`
-    }
     if (baseSub && baseSub.pricesPerQty && subMonths) {
       return `$${(subMonths * baseSub.pricesPerQty[selectedQty]).toFixed(2)}`
     }
   }
 
-  const totalPrice = ({
-    pricePerMonth,
-    subMonths,
-    pricesPerQty,
-    subInfo,
-  }: ISub) => {
-    if (id === SUB_TYPE.place && pricePerMonth && subMonths) {
-      return `$${pricePerMonth * subMonths}`
-    }
+  const totalPrice = ({ subMonths, pricesPerQty, subInfo }: ISub) => {
     if (pricesPerQty && subMonths && subInfo) {
       return `$${(pricesPerQty[selectedQty] * subMonths).toFixed(2)} ${subInfo[selectedLang]?.subTotalTxt}`
     }

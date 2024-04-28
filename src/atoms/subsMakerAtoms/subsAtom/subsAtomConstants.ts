@@ -28,6 +28,7 @@ export const SUBS_INITIAL_ATOM: ISubsAtom = {
     subs: [],
   },
   [SUB_TYPE.place]: {
+    qty: [],
     subs: [],
   },
   [SUB_TYPE.hotel]: {
