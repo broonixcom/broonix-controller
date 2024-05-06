@@ -2,7 +2,7 @@ import { ThemeConfig } from 'antd'
 
 const theme: ThemeConfig = {
   token: {
-    colorPrimary: '#007bff',
+    colorPrimary: '#ea8369',
     fontFamily: 'Montserrat-Regular',
   },
 }
